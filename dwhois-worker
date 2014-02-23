@@ -1,5 +1,7 @@
 #!/usr/bin/python
 
+import sys
+
 from dwhois.whois import whois, WhoisError
 from dwhois.timing import PoissonRateLimiter
 from dwhois.worker import Worker, WorkerError
@@ -8,11 +10,14 @@ from dwhois.config import user,password,average_time,api_base_url
 worker = Worker(api_base_url, user, password)
 for domain in worker.queue():
     print 'Processing %s' % domain
+    sys.stdout.flush()
 
     with PoissonRateLimiter(average_time):
         try:
             worker.push_results(domain, whois(domain))
         except WhoisError, e:
             print e.message
+            sys.stdout.flush()
         except WorkerError, e:
             print e.message
+            sys.stdout.flush()
