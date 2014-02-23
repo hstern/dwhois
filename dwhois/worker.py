@@ -21,11 +21,21 @@ class Worker:
         self.sleep_min = sleep_min
         self.sleep_max = sleep_max
 
-    def queue(self):
+    def queue(self, queue=None, number=None):
+        request_url = self.request_url
+        if queue:
+            if request_url[-1] != '/':
+                request_url += '/'
+            request_url = urlparse.urljoin(request_url, queue)
+        if number:
+            if request_url[-1] != '/':
+                request_url += '/'
+            request_url = urlparse.urljoin(request_url, str(number))
+
         error_sleep = self.sleep_min
         while True:
             try:
-                r = requests.get(self.request_url,
+                r = requests.get(request_url,
                         auth=(self.user,self.password),
                         stream=False,
                         verify=False)
