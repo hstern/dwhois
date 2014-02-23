@@ -7,27 +7,9 @@ import time
 import urllib
 import urlparse
 
+from dwhois.worker import work_queue
 from dwhois.config import user,password,average_time,request_url,upload_base_url
 import requests
-
-def work_queue(request_url, user=None, password=None):
-    error_sleep = 1
-    while True:
-        try:
-            r = requests.get(request_url,
-                    auth=(user,password),
-                    stream=False,
-                    verify=False)
-            r.raise_for_status()
-
-            error_sleep = 1
-            for domain in r.text.split():
-                yield domain
-        except (requests.exceptions.HTTPError,
-                requests.exceptions.ConnectionError), e:
-            print e.message
-            time.sleep(error_sleep)
-            error_sleep = min(error_sleep*2, 60)
 
 for domain in work_queue(request_url, user, password):
     print 'Processing %s' % domain
