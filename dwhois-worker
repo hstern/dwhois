@@ -7,7 +7,7 @@ import time
 import urllib
 import urlparse
 
-from dwhois.worker import work_queue
+from dwhois.worker import work_queue, push_results
 from dwhois.config import user,password,average_time,request_url,upload_base_url
 import requests
 
@@ -22,20 +22,10 @@ for domain in work_queue(request_url, user, password):
         buf.seek(0)
         errbuf.seek(0)
 
-        upload_url = urlparse.urljoin(upload_base_url, urllib.quote(domain, safe=''))
+        push_results(domain, buf.read(), upload_base_url, user, password)
 
-        r = requests.get(upload_url,
-            auth=(user,password),
-            files={ 'file':
-                ('%s.txt' % domain, buf.read(), 'text/plain') },
-            stream=False,
-            verify=False)
-        r.raise_for_status()
     except subprocess.CalledProcessError, e:
         print errbuf.read()
-    except (requests.exceptions.HTTPError,
-            requests.exceptions.ConnectionError), e:
-        print e.message
 
     t_end = time.time()
     t_sleep = random.expovariate(1.0/average_time) - (t_end - t_start)
