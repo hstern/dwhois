@@ -8,16 +8,19 @@ Configuration
 
 Create `/etc/dwhois.conf` or `~/.dwhois.conf`.  Set whatever options you need to from:
 
-```[dwhois]
+```
+[dwhois]
 user=your username
 password=your password
 average_time=time per domain in seconds
-url=https://path/to/api/version/```
+url=https://path/to/api/version/
+```
 
 Querying
 --------
 
-```usage: dwhois [-h] [--json] [--files [FILES [FILES ...]]] [--check] [--submit]
+```
+usage: dwhois [-h] [--json] [--files [FILES [FILES ...]]] [--check] [--submit]
               [domains [domains ...]]
 
 positional arguments:
@@ -29,18 +32,21 @@ optional arguments:
   --files [FILES [FILES ...]], -f [FILES [FILES ...]]
                         file with domains
   --check, -c           check instead of get
-  --submit, -s          submit domains```
+  --submit, -s          submit domains
+```
 
 User Account Info
 -----------------
 
-```usage: dwhois-user [-h] user
+```
+usage: dwhois-user [-h] user
 
 positional arguments:
   user        user to query
 
 optional arguments:
-  -h, --help  show this help message and exit```
+  -h, --help  show this help message and exit
+```
 
 Worker Process
 --------------
