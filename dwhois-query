@@ -1,0 +1,48 @@
+#!/usr/bin/python
+
+import argparse
+import sys
+
+from dwhois.whois import whois, WhoisError
+from dwhois.timing import PoissonRateLimiter
+from dwhois.query import DWhois, QueryError
+from dwhois.config import user,password,average_time,api_base_url
+
+parser = argparse.ArgumentParser()
+parser.add_argument('domains', help='list of domains', nargs='*')
+parser.add_argument('--files','-f', help='file with domains', nargs='*')
+parser.add_argument('--check','-c', help='check instead of get', action='store_true')
+args = parser.parse_args()
+
+if not args.files and not args.domains:
+    parser.error('Domains or files required')
+
+def format(blob, out):
+    print 'Domain: %s' % blob['domain_name']
+    print 'Submitted: %d' % blob['submitted']
+    print blob['whois']
+    print '--EOF--'
+
+dwhois = DWhois(api_base_url, user, password)
+
+if args.files:
+    for fn in args.files:
+        if fn == '-':
+            f = sys.stdin
+        else:
+            f = open(fn)
+
+        for line in f:
+            domain = line.strip()
+            if not args.check:
+                format(dwhois.get(domain), sys.stdout)
+            else:
+                print '%s: %s' % (domain, bool(dwhois.check(domain)))
+
+        f.close()
+
+for domain in args.domains:
+    if not args.check:
+        format(dwhois.get(domain), sys.stdout)
+    else:
+        print '%s: %s' % (domain, bool(dwhois.check(domain)))
