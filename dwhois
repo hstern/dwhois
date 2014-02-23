@@ -3,10 +3,8 @@
 import argparse
 import sys
 
-from dwhois.whois import whois, WhoisError
-from dwhois.timing import PoissonRateLimiter
-from dwhois.query import DWhois, QueryError
-from dwhois.config import user,password,average_time,api_base_url
+from dwhois.query import DWhois
+from dwhois.config import user,password,api_base_url
 
 parser = argparse.ArgumentParser()
 parser.add_argument('domains', help='list of domains', nargs='*')
