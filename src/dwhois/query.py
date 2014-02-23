@@ -30,7 +30,7 @@ class DWhois:
             return r.json()
         except (requests.exceptions.HTTPError,
                 requests.exceptions.ConnectionError), e:
-            raise WorkerError, e.message, sys.exc_traceback()
+            raise WorkerError, e.message, sys.exc_traceback
 
     def check(self, domain):
         get_url = urlparse.urljoin(self.base_url, urllib.quote(domain, safe=''))
@@ -52,7 +52,7 @@ class DWhois:
             raise WorkerError, 'Unexpected HTTP status code: %d'% r.status_code
         except (requests.exceptions.HTTPError,
                 requests.exceptions.ConnectionError), e:
-            raise WorkerError, e.message, sys.exc_traceback()
+            raise WorkerError, e.message, sys.exc_traceback
 
     def get_user(self, user):
         user_url = urlparse.urljoin(self.base_user_url, urllib.quote(user, safe=''))
@@ -68,5 +68,5 @@ class DWhois:
             return r.json()
         except (requests.exceptions.HTTPError,
                 requests.exceptions.ConnectionError), e:
-            raise WorkerError, e.message, sys.exc_traceback()
+            raise WorkerError, e.message, sys.exc_traceback
 

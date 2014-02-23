@@ -63,4 +63,4 @@ class Worker:
             r.raise_for_status()
         except (requests.exceptions.HTTPError,
                 requests.exceptions.ConnectionError), e:
-            raise WorkerError, e.message, sys.exc_traceback()
+            raise WorkerError, e.message, sys.exc_traceback
