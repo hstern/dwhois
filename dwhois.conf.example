@@ -1,0 +1,4 @@
+[dwhois]
+user=your_username
+password=your_password
+url=https://path/to/api/version/
