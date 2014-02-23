@@ -13,8 +13,6 @@ class RateLimiter:
         t_end = time.time()
         t_sleep = self.sleep_time() - (t_end - self._t_start)
         if t_sleep > 0:
-            # TODO logger
-            print 'Sleeping %f' % t_sleep
             time.sleep(t_sleep)
         return True
 
