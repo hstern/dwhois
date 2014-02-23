@@ -11,4 +11,5 @@ setup(name='dwhois',
         package_dir={'dwhois': 'src/dwhois'},
         package_data={'dwhois': ['default.conf']},
         scripts=['dwhois','dwhois-worker','dwhois-user'],
+        install_requires=['requests >= 2.2.1'],
         )
