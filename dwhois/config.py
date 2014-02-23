@@ -7,15 +7,15 @@ import urlparse
 config = ConfigParser.ConfigParser()
 config.readfp(open(
     os.path.join(os.path.dirname(__file__), 'default.conf')))
-config.read(['/etc/whois-worker.conf',
-    os.path.expanduser('~/.whois-worker.conf'),
-    './whois-worker.conf'])
+config.read(['/etc/dwhois.conf',
+    os.path.expanduser('~/.dwhois.conf'),
+    './dwhois.conf'])
 
-user=config.get('whois-worker', 'user')
-password=config.get('whois-worker', 'password')
+user=config.get('dwhois', 'user')
+password=config.get('dwhois', 'password')
 
-average_time = int(config.get('whois-worker', 'average_time'))
-api_base_url = config.get('whois-worker', 'url')
+average_time = int(config.get('dwhois', 'average_time'))
+api_base_url = config.get('dwhois', 'url')
 
 request_url = urlparse.urljoin(api_base_url, 'request/')
 upload_base_url = urlparse.urljoin(api_base_url, 'whois/')
