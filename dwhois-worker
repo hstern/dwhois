@@ -1,8 +1,6 @@
 #!/usr/bin/python
 
-import subprocess
-import tempfile
-
+from dwhois.whois import whois, WhoisError
 from dwhois.timing import PoissonRateLimiter
 from dwhois.worker import work_queue, push_results
 from dwhois.config import user,password,average_time,request_url,upload_base_url
@@ -11,14 +9,7 @@ for domain in work_queue(request_url, user, password):
     print 'Processing %s' % domain
 
     with PoissonRateLimiter(average_time):
-        buf = tempfile.TemporaryFile()
-        errbuf = tempfile.TemporaryFile()
         try:
-            subprocess.check_call(['whois', domain], stdout=buf, stderr=errbuf)
-            buf.seek(0)
-            errbuf.seek(0)
-
-            push_results(domain, buf.read(), upload_base_url, user, password)
-
-        except subprocess.CalledProcessError, e:
-            print errbuf.read()
+            push_results(domain, whois(domain), upload_base_url, user, password)
+        except WhoisError, e:
+            print e.message
