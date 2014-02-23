@@ -7,29 +7,23 @@ import time
 import urllib
 import urlparse
 
+from dwhois.timing import PoissonRateLimiter
 from dwhois.worker import work_queue, push_results
 from dwhois.config import user,password,average_time,request_url,upload_base_url
 import requests
 
 for domain in work_queue(request_url, user, password):
     print 'Processing %s' % domain
-    t_start = time.time()
 
-    buf = tempfile.TemporaryFile()
-    errbuf = tempfile.TemporaryFile()
-    try:
-        subprocess.check_call(['whois', domain], stdout=buf, stderr=errbuf)
-        buf.seek(0)
-        errbuf.seek(0)
+    with PoissonRateLimiter(average_time):
+        buf = tempfile.TemporaryFile()
+        errbuf = tempfile.TemporaryFile()
+        try:
+            subprocess.check_call(['whois', domain], stdout=buf, stderr=errbuf)
+            buf.seek(0)
+            errbuf.seek(0)
 
-        push_results(domain, buf.read(), upload_base_url, user, password)
+            push_results(domain, buf.read(), upload_base_url, user, password)
 
-    except subprocess.CalledProcessError, e:
-        print errbuf.read()
-
-    t_end = time.time()
-    t_sleep = random.expovariate(1.0/average_time) - (t_end - t_start)
-
-    if t_sleep > 0:
-        print 'Sleeping %f' % t_sleep
-        time.sleep(t_sleep)
+        except subprocess.CalledProcessError, e:
+            print errbuf.read()
