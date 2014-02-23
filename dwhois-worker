@@ -1,16 +1,11 @@
 #!/usr/bin/python
 
-import random
 import subprocess
 import tempfile
-import time
-import urllib
-import urlparse
 
 from dwhois.timing import PoissonRateLimiter
 from dwhois.worker import work_queue, push_results
 from dwhois.config import user,password,average_time,request_url,upload_base_url
-import requests
 
 for domain in work_queue(request_url, user, password):
     print 'Processing %s' % domain
