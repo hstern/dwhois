@@ -1,13 +1,14 @@
 #!/usr/bin/env python
 
-from setuptools import setup, find_packages
+from setuptools import setup
 
 setup(name='dwhois',
         version='0.0',
-        description='Distributed WHOIS Worker',
+        description='Distributed WHOIS',
         author='Henry Stern',
         author_email='henry@stern.ca',
-        packages=find_packages(),
+        packages=['dwhois'],
+        package_dir={'dwhois': 'src/dwhois'},
         package_data={'dwhois': ['default.conf']},
-        scripts=['dwhois-worker'],
+        scripts=['dwhois','dwhois-worker'],
         )
