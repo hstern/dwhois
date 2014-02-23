@@ -54,3 +54,19 @@ class DWhois:
                 requests.exceptions.ConnectionError), e:
             raise WorkerError, e.message, sys.exc_traceback()
 
+    def get_user(self, user):
+        user_url = urlparse.urljoin(self.base_user_url, urllib.quote(user, safe=''))
+
+        try:
+            r = requests.get(user_url,
+                    auth=(self.user,self.password),
+                    headers={ 'Accept' : '/application/json' },
+                    stream=False,
+                    verify=False)
+            r.raise_for_status()
+
+            return r.json()
+        except (requests.exceptions.HTTPError,
+                requests.exceptions.ConnectionError), e:
+            raise WorkerError, e.message, sys.exc_traceback()
+

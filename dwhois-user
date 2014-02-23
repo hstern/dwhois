@@ -1,0 +1,18 @@
+#!/usr/bin/python
+
+import argparse
+import sys
+
+from dwhois.whois import whois, WhoisError
+from dwhois.timing import PoissonRateLimiter
+from dwhois.query import DWhois, QueryError
+from dwhois.config import user,password,average_time,api_base_url
+
+parser = argparse.ArgumentParser()
+parser.add_argument('user', help='user to query')
+args = parser.parse_args()
+
+dwhois = DWhois(api_base_url, user, password)
+
+for key,value in dwhois.get_user(args.user).items():
+    print "%s: %s" % (key, value)
