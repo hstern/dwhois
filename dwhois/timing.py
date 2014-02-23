@@ -21,6 +21,24 @@ class RateLimiter:
     def sleep_time(self):
         return self.sleep_time
 
+class RandomRateLimiter(RateLimiter):
+    def __init__(self, minval=0, maxval=1):
+        if maxval < minval:
+            raise ValueError, 'Minval greater than maxval (%d > %d)' % (minval, maxval)
+        self.minval = minval
+        self.maxval = maxval
+
+    def sleep_time(self):
+        return self.minval + random.random() * (self.maxval - self.minval)
+
+class GaussianRateLimiter(RateLimiter):
+    def __init__(self, mu=1, sigma=1):
+        self.mu = mu
+        self.sigma = sigma
+
+    def sleep_time(self):
+        return max(0, random.gauss(self.mu, self.sigma))
+
 class PoissonRateLimiter(RateLimiter):
     def __init__(self, average_time=1):
         self.average_time = average_time
