@@ -3,7 +3,7 @@
 import argparse
 import sys
 
-from dwhois.query import DWhois
+from dwhois.query import DWhois, QueryError
 from dwhois.config import user,password,api_base_url
 
 parser = argparse.ArgumentParser()
@@ -34,7 +34,12 @@ if args.files:
         for line in f:
             domain = line.strip()
             if not args.check and not args.submit:
-                format(dwhois.get(domain), sys.stdout)
+                try:
+                    format(dwhois.get(domain), sys.stdout)
+                except QueryError, e:
+                    print 'Domain: %s' % domain
+                    print 'ERROR: %s' % e.message
+                    print '--EOF--'
             else:
                 if args.check and args.submit:
                     if not dwhois.check(domain):
@@ -49,7 +54,12 @@ if args.files:
 
 for domain in args.domains:
     if not args.check and not args.submit:
-        format(dwhois.get(domain), sys.stdout)
+        try:
+            format(dwhois.get(domain), sys.stdout)
+        except QueryError, e:
+            print 'Domain: %s' % domain
+            print 'ERROR: %s' % e.message
+            print '--EOF--'
     else:
         if args.check and args.submit:
             if not dwhois.check(domain):
