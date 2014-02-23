@@ -2,14 +2,17 @@
 
 from dwhois.whois import whois, WhoisError
 from dwhois.timing import PoissonRateLimiter
-from dwhois.worker import work_queue, push_results
-from dwhois.config import user,password,average_time,request_url,upload_base_url
+from dwhois.worker import Worker, WorkerError
+from dwhois.config import user,password,average_time,api_base_url
 
-for domain in work_queue(request_url, user, password):
+worker = Worker(api_base_url, user, password)
+for domain in worker.queue():
     print 'Processing %s' % domain
 
     with PoissonRateLimiter(average_time):
         try:
-            push_results(domain, whois(domain), upload_base_url, user, password)
+            worker.push_results(domain, whois(domain))
         except WhoisError, e:
+            print e.message
+        except WorkerError, e:
             print e.message
