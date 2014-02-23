@@ -12,6 +12,7 @@ class DWhois:
     def __init__(self, base_url=api_base_url, user=None, password=None):
         self.base_url = urlparse.urljoin(base_url, 'whois/')
         self.base_user_url = urlparse.urljoin(base_url, 'user/')
+        self.request_url = urlparse.urljoin(base_url, 'request/')
 
         self.user = user
         self.password = password
@@ -53,6 +54,26 @@ class DWhois:
         except (requests.exceptions.HTTPError,
                 requests.exceptions.ConnectionError), e:
             raise WorkerError, e.message, sys.exc_traceback
+
+    def submit(self, domains, queue=None):
+        request_url = self.request_url
+        if queue:
+            if request_url[-1] != '/':
+                request_url += '/'
+            request_url = urlparse.urljoin(request_url, queue)
+
+        try:
+            r = requests.post(request_url,
+                    data='\n'.join(domains),
+                    auth=(self.user,self.password),
+                    headers={ 'Accept' : '/application/json' },
+                    stream=False,
+                    verify=False)
+            r.raise_for_status()
+        except (requests.exceptions.HTTPError,
+                requests.exceptions.ConnectionError), e:
+            raise QueryError, e.message, sys.exc_traceback
+
 
     def get_user(self, user):
         user_url = urlparse.urljoin(self.base_user_url, urllib.quote(user, safe=''))

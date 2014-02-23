@@ -12,6 +12,7 @@ parser = argparse.ArgumentParser()
 parser.add_argument('domains', help='list of domains', nargs='*')
 parser.add_argument('--files','-f', help='file with domains', nargs='*')
 parser.add_argument('--check','-c', help='check instead of get', action='store_true')
+parser.add_argument('--submit','-s', help='submit domains', action='store_true')
 args = parser.parse_args()
 
 if not args.files and not args.domains:
@@ -34,15 +35,29 @@ if args.files:
 
         for line in f:
             domain = line.strip()
-            if not args.check:
+            if not args.check and not args.submit:
                 format(dwhois.get(domain), sys.stdout)
             else:
-                print '%s: %s' % (domain, bool(dwhois.check(domain)))
+                if args.check and args.submit:
+                    if not dwhois.check(domain):
+                        print 'Submitting: %s' % domain
+                        dwhois.submit(domain)
+                elif args.check:
+                    print '%s: %s' % (domain, bool(dwhois.check(domain)))
+                else:
+                    dwhois.submit(domain)
 
         f.close()
 
 for domain in args.domains:
-    if not args.check:
+    if not args.check and not args.submit:
         format(dwhois.get(domain), sys.stdout)
     else:
-        print '%s: %s' % (domain, bool(dwhois.check(domain)))
+        if args.check and args.submit:
+            if not dwhois.check(domain):
+                print 'Submitting: %s' % domain
+                dwhois.submit(domain)
+        elif args.check:
+            print '%s: %s' % (domain, bool(dwhois.check(domain)))
+        else:
+            dwhois.submit(domain)
