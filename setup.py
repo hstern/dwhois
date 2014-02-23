@@ -8,6 +8,6 @@ setup(name='dwhois',
         author='Henry Stern',
         author_email='henry@stern.ca',
         packages=find_packages(),
-        package_data={'dwhois': ['dwhois/default.conf']},
+        package_data={'dwhois': ['default.conf']},
         scripts=['dwhois-worker'],
         )
