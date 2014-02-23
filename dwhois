@@ -1,6 +1,7 @@
 #!/usr/bin/python
 
 import argparse
+import json
 import sys
 
 from dwhois.query import DWhois, QueryError
@@ -8,6 +9,7 @@ from dwhois.config import user,password,api_base_url
 
 parser = argparse.ArgumentParser()
 parser.add_argument('domains', help='list of domains', nargs='*')
+parser.add_argument('--json','-j', help='json output', action='store_true')
 parser.add_argument('--files','-f', help='file with domains', nargs='*')
 parser.add_argument('--check','-c', help='check instead of get', action='store_true')
 parser.add_argument('--submit','-s', help='submit domains', action='store_true')
@@ -35,7 +37,10 @@ if args.files:
             domain = line.strip()
             if not args.check and not args.submit:
                 try:
-                    format(dwhois.get(domain), sys.stdout)
+                    if args.json:
+                        print json.dumps(dwhois.get(domain))
+                    else:
+                        format(dwhois.get(domain), sys.stdout)
                 except QueryError, e:
                     print 'Domain: %s' % domain
                     print 'ERROR: %s' % e.message
@@ -55,7 +60,10 @@ if args.files:
 for domain in args.domains:
     if not args.check and not args.submit:
         try:
-            format(dwhois.get(domain), sys.stdout)
+            if args.json:
+                print json.dumps(dwhois.get(domain))
+            else:
+                format(dwhois.get(domain), sys.stdout)
         except QueryError, e:
             print 'Domain: %s' % domain
             print 'ERROR: %s' % e.message
