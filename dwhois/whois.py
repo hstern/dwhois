@@ -12,6 +12,6 @@ def whois(domain):
         subprocess.check_call(['whois', domain], stdout=buf, stderr=errbuf)
         buf.seek(0)
         return buf.read()
-    except subprocess.CalledProcessError, e:
+    except subprocess.CalledProcessError:
         errbuf.seek(0)
         raise WhoisError, errbuf.read()
