@@ -10,5 +10,5 @@ setup(name='dwhois',
         packages=['dwhois'],
         package_dir={'dwhois': 'src/dwhois'},
         package_data={'dwhois': ['default.conf']},
-        scripts=['dwhois','dwhois-worker'],
+        scripts=['dwhois','dwhois-worker','dwhois-user'],
         )
