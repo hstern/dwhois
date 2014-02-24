@@ -2,9 +2,21 @@ import subprocess
 import tempfile
 
 class WhoisError(Exception):
-    pass
+    """
+    Raised when the WHOIS lookup fails.
+    """
 
 def whois(domain):
+    """
+    Retrieves a WHOIS record.
+
+    @param domain: The domain to look up.
+    @type domain: string
+
+    @rtype: string
+
+    @raise WhoisError: On lookup failure.
+    """
     buf = tempfile.TemporaryFile()
     errbuf = tempfile.TemporaryFile()
 
