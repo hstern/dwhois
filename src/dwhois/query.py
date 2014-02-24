@@ -6,10 +6,23 @@ import urlparse
 from dwhois.config import api_base_url
 
 class QueryError(Exception):
-    pass
+    """
+    Raised when an error occurs while talking to the remote server.
+    """
 
 class DWhois:
+    """
+    Manages communications with the remote server.
+    """
     def __init__(self, base_url=api_base_url, user=None, password=None):
+        """
+        @param base_url: base URL for the API
+        @type base_url: url, must end with /
+        @param user: username
+        @type user: string
+        @param password: password
+        @type password: string
+        """
         self.base_url = urlparse.urljoin(base_url, 'whois/')
         self.base_user_url = urlparse.urljoin(base_url, 'user/')
         self.request_url = urlparse.urljoin(base_url, 'request/')
@@ -18,6 +31,17 @@ class DWhois:
         self.password = password
 
     def get(self, domain):
+        """
+        Retrieves JSON-packed WHOIS data from the remote server.
+
+        @param domain: The domain to retrieve.
+        @param type: string
+
+        @return: WHOIS data plus domain name and submit time.
+        @rtype: decoded JSON dict
+
+        @raise QueryError: On communications or authentication failure.
+        """
         get_url = urlparse.urljoin(self.base_url, urllib.quote(domain, safe=''))
 
         try:
@@ -34,6 +58,17 @@ class DWhois:
             raise QueryError, e.message, sys.exc_traceback
 
     def check(self, domain):
+        """
+        Checks whether or not the remote server has WHOIS data for
+        domain.
+
+        @param domain: The domain to check.
+        @param type: string
+
+        @rtype: bool
+
+        @raise QueryError: On communications or authentication failure.
+        """
         get_url = urlparse.urljoin(self.base_url, urllib.quote(domain, safe=''))
 
         try:
@@ -56,6 +91,14 @@ class DWhois:
             raise QueryError, e.message, sys.exc_traceback
 
     def submit(self, domains, queue=None):
+        """
+        Submits a list of domains for processing by workers.
+
+        @param domains: The domains to submit.
+        @param type: iterable of strings
+
+        @raise QueryError: On communications or authentication failure.
+        """
         request_url = self.request_url
         if queue:
             if request_url[-1] != '/':
@@ -74,8 +117,18 @@ class DWhois:
                 requests.exceptions.ConnectionError), e:
             raise QueryError, e.message, sys.exc_traceback
 
-
     def get_user(self, user):
+        """
+        Retrieves information about a user's account.
+
+        @param user: username
+        @type  user: string
+
+        @return: Decoded JSON dict
+        @rtype: dict
+
+        @raise QueryError: On communications or authentication failure.
+        """
         user_url = urlparse.urljoin(self.base_user_url, urllib.quote(user, safe=''))
 
         try:
