@@ -2,6 +2,7 @@ dwhois
 ======
 
 Client and worker for a database of WHOIS records accessed via HTTP.
+Has an optional MongoDB-backed result cache.
 
 Configuration
 -------------
@@ -14,6 +15,12 @@ user=your username
 password=your password
 average_time=time per domain in seconds
 url=https://path/to/api/version/
+
+[cache]
+use_cache=True
+url=mongodb://url_to_mongodb/ (optional, defaults to localhost)
+db=dwhois
+collection=dwhois
 ```
 
 Querying

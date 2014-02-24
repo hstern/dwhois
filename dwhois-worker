@@ -1,20 +1,30 @@
 #!/usr/bin/python
 
 import sys
+import time
 
 from dwhois.whois import whois, WhoisError
 from dwhois.timing import PoissonRateLimiter
 from dwhois.worker import Worker, WorkerError
-from dwhois.config import user,password,average_time,api_base_url
+from dwhois.config import user, password, average_time, api_base_url, use_cache, cache_url, cache_db, cache_collection
 
 worker = Worker(api_base_url, user, password)
+
+if use_cache:
+    from dwhois.cache import Cache
+    cache = Cache(cache_url, cache_db, cache_collection)
+
 for domain in worker.queue():
     print 'Processing %s' % domain
     sys.stdout.flush()
 
     with PoissonRateLimiter(average_time):
         try:
-            worker.push_results(domain, whois(domain))
+            whois_data = whois(domain)
+            worker.push_results(domain, whois_data)
+            if use_cache:
+                cache.add({'domain_name':domain, 'submitted':time.time(),
+                    'whois': whois_data})
         except WhoisError, e:
             print e.message
             sys.stdout.flush()
