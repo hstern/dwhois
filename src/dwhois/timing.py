@@ -23,12 +23,12 @@ class RateLimiter:
     """
     Constant duration rate limiter.
     """
-    def __init__(self, sleep_time=1):
+    def __init__(self, limit=1):
         """
-        @param sleep_time: How long each iteration should take.
-        @type sleep_time: float seconds
+        @param limit: How long each iteration should take.
+        @type limit: float seconds
         """
-        self.sleep_time = sleep_time
+        self.limit = limit
 
     def __enter__(self):
         self._t_start = time.time()
@@ -50,7 +50,7 @@ class RateLimiter:
         actually sleep.  That is based on the clock.
         @rval: float seconds
         """
-        return self.sleep_time
+        return self.limit
 
 class RandomRateLimiter(RateLimiter):
     """
