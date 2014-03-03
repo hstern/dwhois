@@ -1,0 +1,13 @@
+Source: dwhois
+Maintainer: Henry Stern <henry@stern.ca>
+Section: python
+Priority: optional
+Build-Depends: python-setuptools (>= 0.6b3), python-all (>= 2.6.6-3), debhelper (>= 7.4.3)
+Standards-Version: 3.9.1
+
+Package: python-dwhois
+Architecture: all
+Depends: ${misc:Depends}, ${python:Depends},
+ whois
+Description: Distributed WHOIS
+
