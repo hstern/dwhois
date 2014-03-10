@@ -59,7 +59,7 @@ class RateLimiter:
         t_sleep = self.sleep_time() - (t_end - self._t_start)
         if t_sleep > 0:
             time.sleep(t_sleep)
-        return True
+        return False
 
     def sleep_time(self):
         """
