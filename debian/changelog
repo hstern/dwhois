@@ -1,5 +1,5 @@
-dwhois (0.5-1) unstable; urgency=low
+dwhois (0.6-1) unstable; urgency=low
 
-  * source package automatically created by stdeb 0.6.0+git
+  * dwhois.timing: __exit__ unintentionally consumed exceptions
 
- -- Henry Stern <henry@stern.ca>  Mon, 03 Mar 2014 16:07:47 -0400
+ -- Henry Stern <henry@stern.ca>  Mon, 10 Mar 2014 10:58:02 -0300
