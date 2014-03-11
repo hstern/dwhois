@@ -33,16 +33,15 @@ def is_valid_object(candidate):
     underscores, and at symbols, separated by whitespace, otherwise this
     returns True for every string as the WHOIS protocol supports binary
     data.
-    
+
     @param candidate: The input string to check
     @type candidate: string
-    
+
     @rtype: boolean
     """
     if whois_strict:
         return re.match(r'^[a-z0-9\-_\.@]+$', candidate, re.I) is not None
     return True
-    
 
 def whois(domain):
     """
@@ -55,16 +54,16 @@ def whois(domain):
 
     @raise WhoisError: On lookup failure.
     """
-    
+
     #perform some input checking since
     #domain could come from an untrusted source
     domain=domain.strip()
     if not is_valid_object(domain):
         raise WhoisError, "invalid domain name: %s"%domain
-    
+
     buf = tempfile.TemporaryFile()
     errbuf = tempfile.TemporaryFile()
-    
+
     try:
         subprocess.check_call(['whois', '--', domain], stdout=buf, stderr=errbuf)
         buf.seek(0)
