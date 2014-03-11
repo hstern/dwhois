@@ -70,4 +70,4 @@ def whois(domain):
         return buf.read()
     except subprocess.CalledProcessError:
         errbuf.seek(0)
-        raise WhoisError, errbuf.read()
+        raise WhoisError, errbuf.read().rstrip()
