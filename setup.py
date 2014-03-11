@@ -20,7 +20,7 @@
 from setuptools import setup
 
 setup(name='dwhois',
-        version='0.6',
+        version='0.7',
         description='Distributed WHOIS',
         author='Henry Stern',
         author_email='henry@stern.ca',
