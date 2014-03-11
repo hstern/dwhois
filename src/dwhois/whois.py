@@ -19,28 +19,29 @@ import subprocess
 import tempfile
 import re
 
+from dwhois.config import whois_path, whois_strict
+
 class WhoisError(Exception):
     """
     Raised when the WHOIS lookup fails.
     """
 
-def is_valid_domain_name(candidate):
+def is_valid_object(candidate):
     """
-    Returns True if candidate is syntactically valid domain name.
-    A domain is considered valid if it contains only letters a-z,A-Z, digits 0-9
-    as well as dots and hyphens where allowed by RFC1035
-    
-    The domain name can not be longer than 255 characters, but
-    the maximum label length of 63 octets is currently only checked in the TLD
+    Returns True if candidate is a valid WHOIS object.  If the whois.strict
+    option is set then this means that it is only alphanumerics, dashes,
+    underscores, and at symbols, separated by whitespace, otherwise this
+    returns True for every string as the WHOIS protocol supports binary
+    data.
     
     @param candidate: The input string to check
     @type candidate: string
     
     @rtype: boolean
     """
-    if len(candidate)>255:
-      return False
-    return re.match(r"""^(?:[a-zA-Z0-9]+(?:\-*[a-zA-Z0-9])*\.)+[a-zA-Z]{2,63}$""",candidate)!=None
+    if whois_strict:
+        return re.match(r'^[a-z0-9\-_\.@]+$', candidate, re.I) is not None
+    return True
     
 
 def whois(domain):
@@ -58,7 +59,7 @@ def whois(domain):
     #perform some input checking since
     #domain could come from an untrusted source
     domain=domain.strip()
-    if not is_valid_domain_name(domain):
+    if not is_valid_object(domain):
         raise WhoisError, "invalid domain name: %s"%domain
     
     buf = tempfile.TemporaryFile()
