@@ -26,7 +26,7 @@ from dwhois.query import DWhois, QueryError
 from dwhois.config import user,password,average_time,api_base_url
 
 parser = argparse.ArgumentParser()
-parser.add_argument('user', help='user to query')
+parser.add_argument('user', nargs='?', help='user to query', default=user)
 args = parser.parse_args()
 
 dwhois = DWhois(api_base_url, user, password)
