@@ -1,3 +1,27 @@
+dwhois (0.7-1) unstable; urgency=low
+
+  [ gryphius ]
+  * dwhois.config: do not add additional trailing slash to api_base_url
+
+  [ Henry Stern ]
+  * dwhois.config: check that api_base_url is set before indexing
+
+  [ gryphius ]
+  * dwhois-user: use configured username as default
+
+  [ Henry Stern ]
+  * dwhois.worker: show body content in error output
+
+  [ gryphius ]
+  * dwhois.whois: validate domain names before passing them as argument to whois command
+
+  [ Henry Stern ]
+  * dwhois.whois: added strict input validation
+  * dwhois.whois: add -- to argv
+  * dwhois.whois: fixed whitespace errors
+
+ -- Henry Stern <henry@stern.ca>  Tue, 11 Mar 2014 09:14:46 -0300
+
 dwhois (0.6-1) unstable; urgency=low
 
   * dwhois.timing: __exit__ unintentionally consumed exceptions
