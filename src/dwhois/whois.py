@@ -65,7 +65,7 @@ def whois(domain):
     errbuf = tempfile.TemporaryFile()
 
     try:
-        subprocess.check_call(['whois', '--', domain], stdout=buf, stderr=errbuf)
+        subprocess.check_call([whois_path, '--', domain], stdout=buf, stderr=errbuf)
         buf.seek(0)
         return buf.read()
     except subprocess.CalledProcessError:
