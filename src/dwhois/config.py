@@ -50,7 +50,7 @@ api_base_url = config.get('dwhois', 'url')
 automatically appended.
 @type api_base_url: url
 """
-if api_base_url[-1] != '/':
+if api_base_url and api_base_url[-1] != '/':
     api_base_url += '/'
 
 use_cache = config.getboolean('cache', 'use_cache')
