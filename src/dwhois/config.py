@@ -73,3 +73,14 @@ cache_collection = config.get('cache', 'collection')
 @var cache_collection: MongoDB collection name.
 @type cache_collection: string
 """
+
+whois_path = config.get('whois','path')
+"""
+@var whois_path: path to the whois binary
+@type whois_path: string
+"""
+whois_strict = config.getboolean('whois','strict')
+"""
+@var whois_strict: use strict input checking
+@type whois_strict: bool
+"""
