@@ -17,11 +17,31 @@
 
 import subprocess
 import tempfile
+import re
 
 class WhoisError(Exception):
     """
     Raised when the WHOIS lookup fails.
     """
+
+def is_valid_domain_name(candidate):
+    """
+    Returns True if candidate is syntactically valid domain name.
+    A domain is considered valid if it contains only letters a-z,A-Z, digits 0-9
+    as well as dots and hyphens where allowed by RFC1035
+    
+    The domain name can not be longer than 255 characters, but
+    the maximum label length of 63 octets is currently only checked in the TLD
+    
+    @param candidate: The input string to check
+    @type candidate: string
+    
+    @rtype: boolean
+    """
+    if len(candidate)>255:
+      return False
+    return re.match(r"""^(?:[a-zA-Z0-9]+(?:\-*[a-zA-Z0-9])*\.)+[a-zA-Z]{2,63}$""",candidate)!=None
+    
 
 def whois(domain):
     """
@@ -34,9 +54,16 @@ def whois(domain):
 
     @raise WhoisError: On lookup failure.
     """
+    
+    #perform some input checking since
+    #domain could come from an untrusted source
+    domain=domain.strip()
+    if not is_valid_domain_name(domain):
+        raise WhoisError, "invalid domain name: %s"%domain
+    
     buf = tempfile.TemporaryFile()
     errbuf = tempfile.TemporaryFile()
-
+    
     try:
         subprocess.check_call(['whois', domain], stdout=buf, stderr=errbuf)
         buf.seek(0)
