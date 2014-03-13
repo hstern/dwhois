@@ -3,3 +3,4 @@ dist/
 *.pyc
 *.egg-info
 dwhois.conf
+data/import

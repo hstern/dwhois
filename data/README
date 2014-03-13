@@ -1,0 +1,5 @@
+This converts the database from whois 5.1.1 (and probably newer) to
+YAML for inclusion in dwhois.
+
+This does not violate the license terms of whois 5.1.1 as GPL v3
+permits inclusion in LGPL v3.
