@@ -22,6 +22,11 @@ from setuptools import setup
 setup(name='dwhois',
         version='0.8',
         description='Distributed WHOIS',
+        long_description="""
+Client and worker for a database of WHOIS records accessed via HTTP.
+Has an optional MongoDB-backed result cache.
+        """,
+        license='LGPL v3',
         author='Henry Stern',
         author_email='henry@stern.ca',
         packages=['dwhois'],
@@ -29,6 +34,7 @@ setup(name='dwhois',
         package_data={'dwhois': ['default.conf']},
         scripts=['dwhois','dwhois-worker','dwhois-user'],
         install_requires=['requests >= 2.2.1', 'pymongo >= 2.6.3'],
+        url='https://github.com/hstern/dwhois',
         classifiers=[
             'Development Status :: 3 - Alpha',
             'Environment :: No Input/Output (Daemon)',
