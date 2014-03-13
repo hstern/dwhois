@@ -1,0 +1,967 @@
+ripe_servers:
+    - whois.ripe.net
+    - whois.apnic.net
+    - whois.afrinic.net
+    - rr.arin.net
+    - whois.6bone.net
+    - whois.connect.com.au
+    - whois.nic.fr
+    - whois.telstra.net
+    - whois.restena.lu
+    - rr.level3.net
+    - whois.ripn.net
+    - whois.arnes.si
+    - www.registry.co.ug
+    - whois.nic.ir
+    - whois.nic.ck
+    - whois.ra.net
+    - whois.bgpmon.net
+hide_strings:
+    - ["NOTICE AND TERMS OF USE: You", ""]
+    - ["TERMS OF USE: You are not", ""]
+    - ["The data in Register", ""]
+    - ["The Data in the Tucows", "RECORD DOES NOT"]
+    - ["The information in this whois database", ""]
+    - ["This whois service currently only", "top-level domains."]
+    - ["The Data in Gabia", "you agree to abide"]
+    - ["The data contained in GoDaddy.com", "is not the registrant"]
+    - ["Disclaimer: The Global Name Registry", "for any commercial"]
+    - ["Access to America Online", "time. By accessing"]
+    - ["# Access and use restricted", ""]
+    - ["% The data in the WHOIS database of 1&1 Internet", ""]
+    - ["The data in this whois database is", ""]
+    - ["The Data in Moniker's WHOIS database", "of Moniker."]
+    - ["The Data in OnlineNIC", "    By starting this query"]
+    - ["Interdomain's WHOIS", "DOES NOT SIGNIFY"]
+    - ["The Data provided by Stargate Holdings", "(2) enable any"]
+    - ["; This data is provided by domaindiscount24.com", ""]
+    - ["%% NOTICE: Access to this information is provided", "%% By submitting"]
+    - ["% NOTICE: Access to the domains information", "% this query"]
+    - ["Access to .AERO WHOIS information", ""]
+    - ["DotAsia WHOIS LEGAL STATEMENT", "integrity of the database."]
+    - ["The .coop registry WHOIS", "VERIFICATION, NOR DO"]
+    - ["%% puntCAT Whois Server", "%% any time."]
+    - ["This Registry database contains ONLY .EDU", "type: help"]
+    - ["Access to INFO WHOIS information is provided", ""]
+    - ["mTLD WHOIS LEGAL STATEMENT", "integrity of the database."]
+    - ["Access to .ORG WHOIS information", ""]
+    - ["Access to RegistryPro's Whois", "All rights"]
+    - ["Telnic, Ltd., the Registry Operator", "(b) harass any person;"]
+    - ["Tralliance, Inc., the Registry", ""]
+    - ["Access to .XXX ICM REGISTRY WHOIS", ""]
+    - ["Access to CCTLD WHOIS information is provided", ""]
+    - ["Access to ASNIC", "by this policy."]
+    - ["% The WHOIS service offered by DNS.be", "% protect the privacy"]
+    - ["% The WHOIS service offered by EURid", "% of the database"]
+    - ["% WHOIS LEGAL STATEMENT AND TERMS & CONDITIONS", ""]
+    - ["NeuStar, Inc., the Registry", "OF THE AVAILABILITY"]
+nic_handles:
+    'net-': 'whois.arin.net'
+    'netblk-': 'whois.arin.net'
+    'poem-': 'whois.ripe.net'
+    'form-': 'whois.ripe.net'
+    'pgpkey-': 'whois.ripe.net'
+    'denic-': 'whois.denic.de'
+    'as-': 'whois.ripe.net'
+    'rs-': 'whois.ripe.net'
+    'rtrs-': 'whois.ripe.net'
+    'fltr-': 'whois.ripe.net'
+    'prng-': 'whois.ripe.net'
+ip_assign:
+    '0.0.0.0/255.0.0.0': "UNKNOWN"
+    '1.0.0.0/255.0.0.0': "whois.apnic.net"
+    '2.0.0.0/255.0.0.0': "whois.ripe.net"
+    '5.0.0.0/255.0.0.0': "whois.ripe.net"
+    '14.0.0.0/255.0.0.0': "whois.apnic.net"
+    '24.132.0.0/255.252.0.0': "whois.ripe.net"
+    '27.0.0.0/255.0.0.0': "whois.apnic.net"
+    '31.0.0.0/255.0.0.0': "whois.ripe.net"
+    '36.0.0.0/255.0.0.0': "whois.apnic.net"
+    '37.0.0.0/255.0.0.0': "whois.ripe.net"
+    '39.0.0.0/255.0.0.0': "whois.apnic.net"
+    '41.0.0.0/255.0.0.0': "whois.afrinic.net"
+    '42.0.0.0/255.0.0.0': "whois.apnic.net"
+    '43.0.0.0/255.0.0.0': "whois.nic.ad.jp"
+    '46.0.0.0/255.0.0.0': "whois.ripe.net"
+    '49.0.0.0/255.0.0.0': "whois.apnic.net"
+    '51.0.0.0/255.0.0.0': "whois.ripe.net"
+    '59.0.0.0/255.224.0.0': "whois.nic.or.kr"
+    '58.0.0.0/254.0.0.0': "whois.apnic.net"
+    '61.72.0.0/255.248.0.0': "whois.nic.or.kr"
+    '61.80.0.0/255.252.0.0': "whois.nic.or.kr"
+    '61.84.0.0/255.254.0.0': "whois.nic.or.kr"
+    '61.112.0.0/255.240.0.0': "whois.nic.ad.jp"
+    '61.192.0.0/255.240.0.0': "whois.nic.ad.jp"
+    '61.208.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '60.0.0.0/254.0.0.0': "whois.apnic.net"
+    '62.0.0.0/255.0.0.0': "whois.ripe.net"
+    '77.0.0.0/255.0.0.0': "whois.ripe.net"
+    '78.0.0.0/254.0.0.0': "whois.ripe.net"
+    '80.0.0.0/240.0.0.0': "whois.ripe.net"
+    '101.0.0.0/255.0.0.0': "whois.apnic.net"
+    '102.0.0.0/255.0.0.0': "whois.afrinic.net"
+    '103.0.0.0/255.0.0.0': "whois.apnic.net"
+    '105.0.0.0/255.0.0.0': "whois.afrinic.net"
+    '106.0.0.0/255.0.0.0': "whois.apnic.net"
+    '109.0.0.0/255.0.0.0': "whois.ripe.net"
+    '110.0.0.0/254.0.0.0': "whois.apnic.net"
+    '112.160.0.0/255.224.0.0': "whois.nic.or.kr"
+    '115.0.0.0/255.240.0.0': "whois.nic.or.kr"
+    '115.16.0.0/255.248.0.0': "whois.nic.or.kr"
+    '118.32.0.0/255.224.0.0': "whois.nic.or.kr"
+    '119.192.0.0/255.224.0.0': "whois.nic.or.kr"
+    '112.0.0.0/248.0.0.0': "whois.apnic.net"
+    '121.128.0.0/255.192.0.0': "whois.nic.or.kr"
+    '125.128.0.0/255.224.0.0': "whois.nic.or.kr"
+    '120.0.0.0/252.0.0.0': "whois.apnic.net"
+    '124.0.0.0/254.0.0.0': "whois.apnic.net"
+    '126.0.0.0/255.0.0.0': "whois.apnic.net"
+    '0.0.0.0/128.0.0.0': "whois.arin.net"
+    '133.0.0.0/255.0.0.0': "whois.nic.ad.jp"
+    '139.20.0.0/255.252.0.0': "whois.ripe.net"
+    '139.24.0.0/255.252.0.0': "whois.ripe.net"
+    '139.28.0.0/255.254.0.0': "whois.ripe.net"
+    '141.0.0.0/255.192.0.0': "whois.ripe.net"
+    '141.86.0.0/255.255.0.0': "whois.arin.net"
+    '141.64.0.0/255.224.0.0': "whois.ripe.net"
+    '141.96.0.0/255.252.0.0': "whois.ripe.net"
+    '141.100.0.0/255.255.0.0': "whois.ripe.net"
+    '145.0.0.0/255.0.0.0': "whois.ripe.net"
+    '146.48.0.0/255.255.0.0': "whois.ripe.net"
+    '149.202.0.0/255.254.0.0': "whois.ripe.net"
+    '149.204.0.0/255.255.0.0': "whois.ripe.net"
+    '149.206.0.0/255.254.0.0': "whois.ripe.net"
+    '149.208.0.0/255.240.0.0': "whois.ripe.net"
+    '149.224.0.0/255.240.0.0': "whois.ripe.net"
+    '149.240.0.0/255.248.0.0': "whois.ripe.net"
+    '149.248.0.0/255.252.0.0': "whois.ripe.net"
+    '150.183.0.0/255.255.0.0': "whois.nic.or.kr"
+    '150.254.0.0/255.255.0.0': "whois.ripe.net"
+    '150.0.0.0/255.0.0.0': "whois.apnic.net"
+    '151.0.0.0/255.192.0.0': "whois.ripe.net"
+    '151.64.0.0/255.224.0.0': "whois.ripe.net"
+    '151.96.0.0/255.252.0.0': "whois.ripe.net"
+    '151.100.0.0/255.255.0.0': "whois.ripe.net"
+    '153.128.0.0/255.128.0.0': "whois.nic.ad.jp"
+    '153.0.0.0/255.0.0.0': "whois.apnic.net"
+    '154.0.0.0/255.0.0.0': "whois.afrinic.net"
+    '155.232.0.0/255.248.0.0': "whois.afrinic.net"
+    '155.240.0.0/255.255.0.0': "whois.afrinic.net"
+    '160.216.0.0/255.252.0.0': "whois.ripe.net"
+    '160.220.0.0/255.255.0.0': "whois.ripe.net"
+    '160.44.0.0/255.252.0.0': "whois.ripe.net"
+    '160.48.0.0/255.240.0.0': "whois.ripe.net"
+    '160.115.0.0/255.255.0.0': "whois.afrinic.net"
+    '160.116.0.0/255.252.0.0': "whois.afrinic.net"
+    '160.120.0.0/255.252.0.0': "whois.afrinic.net"
+    '160.124.0.0/255.255.0.0': "whois.afrinic.net"
+    '163.156.0.0/255.252.0.0': "whois.ripe.net"
+    '163.160.0.0/255.240.0.0': "whois.ripe.net"
+    '163.195.0.0/255.255.0.0': "whois.afrinic.net"
+    '163.196.0.0/255.252.0.0': "whois.afrinic.net"
+    '163.200.0.0/255.252.0.0': "whois.afrinic.net"
+    '163.0.0.0/255.0.0.0': "whois.apnic.net"
+    '164.0.0.0/255.224.0.0': "whois.ripe.net"
+    '164.32.0.0/255.248.0.0': "whois.ripe.net"
+    '164.40.0.0/255.255.0.0': "whois.ripe.net"
+    '164.128.0.0/255.240.0.0': "whois.ripe.net"
+    '164.146.0.0/255.254.0.0': "whois.afrinic.net"
+    '164.148.0.0/255.252.0.0': "whois.afrinic.net"
+    '165.143.0.0/255.255.0.0': "whois.afrinic.net"
+    '165.144.0.0/255.252.0.0': "whois.afrinic.net"
+    '165.148.0.0/255.254.0.0': "whois.afrinic.net"
+    '169.208.0.0/255.240.0.0': "whois.apnic.net"
+    '171.16.0.0/255.240.0.0': "whois.ripe.net"
+    '171.32.0.0/255.254.0.0': "whois.ripe.net"
+    '171.0.0.0/255.0.0.0': "whois.apnic.net"
+    '175.192.0.0/255.192.0.0': "whois.nic.or.kr"
+    '175.0.0.0/255.0.0.0': "whois.apnic.net"
+    '176.0.0.0/255.0.0.0': "whois.ripe.net"
+    '177.0.0.0/255.0.0.0': "whois.lacnic.net"
+    '178.0.0.0/255.0.0.0': "whois.ripe.net"
+    '179.0.0.0/255.0.0.0': "whois.lacnic.net"
+    '180.0.0.0/255.0.0.0': "whois.apnic.net"
+    '181.0.0.0/255.0.0.0': "whois.lacnic.net"
+    '183.96.0.0/255.224.0.0': "whois.nic.or.kr"
+    '182.0.0.0/254.0.0.0': "whois.apnic.net"
+    '185.0.0.0/255.0.0.0': "whois.ripe.net"
+    '186.0.0.0/254.0.0.0': "whois.lacnic.net"
+    '188.0.0.0/255.0.0.0': "whois.ripe.net"
+    '189.0.0.0/255.0.0.0': "whois.lacnic.net"
+    '190.0.0.0/254.0.0.0': "whois.lacnic.net"
+    '128.0.0.0/192.0.0.0': "whois.arin.net"
+    '192.71.0.0/255.255.0.0': "whois.ripe.net"
+    '192.72.253.0/255.255.255.0': "whois.arin.net"
+    '192.72.254.0/255.255.255.0': "whois.arin.net"
+    '192.72.0.0/255.255.0.0': "whois.apnic.net"
+    '192.106.0.0/255.255.0.0': "whois.ripe.net"
+    '192.114.0.0/255.254.0.0': "whois.ripe.net"
+    '192.116.0.0/255.254.0.0': "whois.ripe.net"
+    '192.118.0.0/255.255.0.0': "whois.ripe.net"
+    '192.162.0.0/255.255.0.0': "whois.ripe.net"
+    '192.164.0.0/255.252.0.0': "whois.ripe.net"
+    '192.0.0.0/255.0.0.0': "whois.arin.net"
+    '193.0.0.0/255.0.0.0': "whois.ripe.net"
+    '194.0.0.0/254.0.0.0': "whois.ripe.net"
+    '196.0.0.0/254.0.0.0': "whois.afrinic.net"
+    '198.0.0.0/254.0.0.0': "whois.arin.net"
+    '200.17.0.0/255.255.0.0': "whois.nic.br"
+    '200.18.0.0/255.254.0.0': "whois.nic.br"
+    '200.20.0.0/255.255.0.0': "whois.nic.br"
+    '200.96.0.0/255.248.0.0': "whois.nic.br"
+    '200.128.0.0/255.128.0.0': "whois.nic.br"
+    '200.0.0.0/254.0.0.0': "whois.lacnic.net"
+    '202.11.0.0/255.255.0.0': "whois.nic.ad.jp"
+    '202.13.0.0/255.255.0.0': "whois.nic.ad.jp"
+    '202.15.0.0/255.255.0.0': "whois.nic.ad.jp"
+    '202.16.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '202.20.128.0/255.255.128.0': "whois.nic.or.kr"
+    '202.23.0.0/255.255.0.0': "whois.nic.ad.jp"
+    '202.24.0.0/255.254.0.0': "whois.nic.ad.jp"
+    '202.26.0.0/255.255.0.0': "whois.nic.ad.jp"
+    '202.30.0.0/255.254.0.0': "whois.nic.or.kr"
+    '202.32.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '202.48.0.0/255.255.0.0': "whois.nic.ad.jp"
+    '202.39.128.0/255.255.128.0': "whois.twnic.net"
+    '202.208.0.0/255.240.0.0': "whois.nic.ad.jp"
+    '202.224.0.0/255.224.0.0': "whois.nic.ad.jp"
+    '203.0.0.0/255.192.0.0': "whois.apnic.net"
+    '203.66.0.0/255.255.0.0': "whois.twnic.net"
+    '203.69.0.0/255.255.0.0': "whois.twnic.net"
+    '203.74.0.0/255.254.0.0': "whois.twnic.net"
+    '203.136.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '203.140.0.0/255.254.0.0': "whois.nic.ad.jp"
+    '203.178.0.0/255.254.0.0': "whois.nic.ad.jp"
+    '203.180.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '203.224.0.0/255.224.0.0': "whois.nic.or.kr"
+    '202.0.0.0/254.0.0.0': "whois.apnic.net"
+    '204.0.0.0/255.252.0.0': "rwhois.gin.ntt.net"
+    '204.0.0.0/252.0.0.0': "whois.arin.net"
+    '208.0.0.0/254.0.0.0': "whois.arin.net"
+    '209.94.192.0/255.255.224.0': "whois.lacnic.net"
+    '210.59.128.0/255.255.128.0': "whois.twnic.net"
+    '210.61.0.0/255.255.0.0': "whois.twnic.net"
+    '210.62.252.0/255.255.252.0': "whois.twnic.net"
+    '210.65.0.0/255.255.0.0': "whois.twnic.net"
+    '210.71.128.0/255.255.0.0': "whois.twnic.net"
+    '210.90.0.0/255.254.0.0': "whois.nic.or.kr"
+    '210.92.0.0/255.252.0.0': "whois.nic.or.kr"
+    '210.96.0.0/255.224.0.0': "whois.nic.or.kr"
+    '210.128.0.0/255.224.0.0': "whois.nic.ad.jp"
+    '210.160.0.0/255.240.0.0': "whois.nic.ad.jp"
+    '210.178.0.0/255.254.0.0': "whois.nic.or.kr"
+    '210.180.0.0/255.252.0.0': "whois.nic.or.kr"
+    '210.188.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '210.196.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '210.204.0.0/255.252.0.0': "whois.nic.or.kr"
+    '210.216.0.0/255.248.0.0': "whois.nic.or.kr"
+    '210.224.0.0/255.240.0.0': "whois.nic.ad.jp"
+    '210.240.0.0/255.255.0.0': "whois.twnic.net"
+    '210.241.0.0/255.254.0.0': "whois.twnic.net"
+    '210.241.224.0/255.255.224.0': "whois.twnic.net"
+    '210.242.0.0/255.254.0.0': "whois.twnic.net"
+    '210.248.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '211.0.0.0/255.240.0.0': "whois.nic.ad.jp"
+    '211.16.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '211.20.0.0/255.254.0.0': "whois.twnic.net"
+    '211.22.0.0/255.255.0.0': "whois.twnic.net"
+    '211.32.0.0/255.224.0.0': "whois.nic.or.kr"
+    '211.75.0.0/255.255.0.0': "whois.twnic.net"
+    '211.72.0.0/255.255.0.0': "whois.twnic.net"
+    '211.104.0.0/255.248.0.0': "whois.nic.or.kr"
+    '211.112.0.0/255.248.0.0': "whois.nic.or.kr"
+    '211.120.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '211.128.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '211.168.0.0/255.248.0.0': "whois.nic.or.kr"
+    '211.176.0.0/255.240.0.0': "whois.nic.or.kr"
+    '211.192.0.0/255.192.0.0': "whois.nic.or.kr"
+    '210.0.0.0/254.0.0.0': "whois.apnic.net"
+    '213.154.32.0/255.255.224.0': "whois.afrinic.net"
+    '213.154.64.0/255.255.224.0': "whois.afrinic.net"
+    '212.0.0.0/254.0.0.0': "whois.ripe.net"
+    '214.0.0.0/254.0.0.0': "whois.arin.net"
+    '216.0.0.0/255.0.0.0': "whois.arin.net"
+    '217.0.0.0/255.0.0.0': "whois.ripe.net"
+    '218.36.0.0/255.252.0.0': "whois.nic.or.kr"
+    '218.40.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '218.48.0.0/255.248.0.0': "whois.nic.or.kr"
+    '219.96.0.0/255.224.0.0': "whois.nic.ad.jp"
+    '218.144.0.0/255.240.0.0': "whois.nic.or.kr"
+    '218.160.0.0/255.240.0.0': "whois.twnic.net"
+    '218.216.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '218.224.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '218.232.0.0/255.248.0.0': "whois.nic.or.kr"
+    '219.240.0.0/255.254.0.0': "whois.nic.or.kr"
+    '219.248.0.0/255.248.0.0': "whois.nic.or.kr"
+    '218.0.0.0/254.0.0.0': "whois.apnic.net"
+    '220.64.0.0/255.224.0.0': "whois.nic.or.kr"
+    '220.96.0.0/255.252.0.0': "whois.nic.ad.jp"
+    '220.103.0.0/255.255.0.0': "whois.nic.or.kr"
+    '220.104.0.0/255.248.0.0': "whois.nic.ad.jp"
+    '220.149.0.0/255.255.0.0': "whois.nic.or.kr"
+    '221.138.0.0/255.248.0.0': "whois.nic.or.kr"
+    '221.144.0.0/255.240.0.0': "whois.nic.or.kr"
+    '221.160.0.0/255.248.0.0': "whois.nic.or.kr"
+    '222.96.0.0/255.240.0.0': "whois.nic.or.kr"
+    '222.112.0.0/255.248.0.0': "whois.nic.or.kr"
+    '222.120.0.0/255.254.0.0': "whois.nic.or.kr"
+    '222.122.0.0/255.255.0.0': "whois.nic.or.kr"
+    '222.232.0.0/255.248.0.0': "whois.nic.or.kr"
+    '220.0.0.0/252.0.0.0': "whois.apnic.net"
+ip6_assign:
+    '2001:0000::/32': "teredo"
+    '2001:0200::/23': "whois.apnic.net"
+    '2001:0400::/23': "whois.arin.net"
+    '2001:0600::/23': "whois.ripe.net"
+    '2001:0800::/22': "whois.ripe.net"
+    '2001:0c00::/22': "whois.apnic.net"
+    '2001:1000::/22': "whois.lacnic.net"
+    '2001:1400::/22': "whois.ripe.net"
+    '2001:1800::/23': "whois.arin.net"
+    '2001:1a00::/23': "whois.ripe.net"
+    '2001:1c00::/22': "whois.ripe.net"
+    '2001:2000::/19': "whois.ripe.net"
+    '2001:4000::/23': "whois.ripe.net"
+    '2001:4200::/23': "whois.afrinic.net"
+    '2001:4400::/23': "whois.apnic.net"
+    '2001:4600::/23': "whois.ripe.net"
+    '2001:4800::/23': "whois.arin.net"
+    '2001:4a00::/23': "whois.ripe.net"
+    '2001:4c00::/22': "whois.ripe.net"
+    '2001:5000::/20': "whois.ripe.net"
+    '2001:8000::/18': "whois.apnic.net"
+    '2002:0000::/16': "6to4"
+    '2003:0000::/18': "whois.ripe.net"
+    '2400:0000::/20': "whois.nic.or.kr"
+    '2400:0000::/12': "whois.apnic.net"
+    '2600:0000::/12': "whois.arin.net"
+    '2610:0000::/23': "whois.arin.net"
+    '2620:0000::/23': "whois.arin.net"
+    '2800:0000::/12': "whois.lacnic.net"
+    '2a00:0000::/12': "whois.ripe.net"
+    '2c00:0000::/12': "whois.afrinic.net"
+    '3ffe:0000::/16': "whois.6bone.net"
+as_del:
+    - { 'first': 248, 'last': 251, 'serv': whois.ripe.net }
+    - { 'first': 306, 'last': 371, 'serv': whois.nic.mil }
+    - { 'first': 379, 'last': 508, 'serv': whois.nic.mil }
+    - { 'first': 1101, 'last': 1200, 'serv': whois.ripe.net }
+    - { 'first': 1267, 'last': 1275, 'serv': whois.ripe.net }
+    - { 'first': 1877, 'last': 1901, 'serv': whois.ripe.net }
+    - { 'first': 2043, 'last': 2043, 'serv': whois.ripe.net }
+    - { 'first': 2047, 'last': 2047, 'serv': whois.ripe.net }
+    - { 'first': 2057, 'last': 2136, 'serv': whois.ripe.net }
+    - { 'first': 2387, 'last': 2488, 'serv': whois.ripe.net }
+    - { 'first': 2497, 'last': 2528, 'serv': whois.nic.ad.jp }
+    - { 'first': 2585, 'last': 2614, 'serv': whois.ripe.net }
+    - { 'first': 2773, 'last': 2822, 'serv': whois.ripe.net }
+    - { 'first': 2830, 'last': 2879, 'serv': whois.ripe.net }
+    - { 'first': 3154, 'last': 3353, 'serv': whois.ripe.net }
+    - { 'first': 4608, 'last': 4864, 'serv': whois.apnic.net }
+    - { 'first': 5120, 'last': 5376, 'serv': whois.nic.mil }
+    - { 'first': 5377, 'last': 5631, 'serv': whois.ripe.net }
+    - { 'first': 5800, 'last': 6055, 'serv': whois.nic.mil }
+    - { 'first': 6656, 'last': 6911, 'serv': whois.ripe.net }
+    - { 'first': 7467, 'last': 7722, 'serv': whois.apnic.net }
+    - { 'first': 8192, 'last': 9215, 'serv': whois.ripe.net }
+    - { 'first': 9591, 'last': 9622, 'serv': whois.nic.ad.jp }
+    - { 'first': 9628, 'last': 9647, 'serv': whois.nic.or.kr }
+    - { 'first': 9683, 'last': 9712, 'serv': whois.nic.or.kr }
+    - { 'first': 9753, 'last': 9784, 'serv': whois.nic.or.kr }
+    - { 'first': 9840, 'last': 9871, 'serv': whois.nic.or.kr }
+    - { 'first': 9943, 'last': 9982, 'serv': whois.nic.or.kr }
+    - { 'first': 9990, 'last': 10021, 'serv': whois.nic.ad.jp }
+    - { 'first': 9216, 'last': 10067, 'serv': whois.apnic.net }
+    - { 'first': 10034, 'last': 10073, 'serv': whois.nic.or.kr }
+    - { 'first': 10154, 'last': 10198, 'serv': whois.nic.or.kr }
+    - { 'first': 10074, 'last': 10239, 'serv': whois.apnic.net }
+    - { 'first': 12288, 'last': 13311, 'serv': whois.ripe.net }
+    - { 'first': 15360, 'last': 16383, 'serv': whois.ripe.net }
+    - { 'first': 17503, 'last': 17534, 'serv': whois.nic.ad.jp }
+    - { 'first': 17567, 'last': 17616, 'serv': whois.nic.or.kr }
+    - { 'first': 17673, 'last': 17704, 'serv': whois.nic.ad.jp }
+    - { 'first': 17832, 'last': 17880, 'serv': whois.nic.or.kr }
+    - { 'first': 17408, 'last': 18431, 'serv': whois.apnic.net }
+    - { 'first': 17930, 'last': 17961, 'serv': whois.nic.ad.jp }
+    - { 'first': 18067, 'last': 18098, 'serv': whois.nic.ad.jp }
+    - { 'first': 18121, 'last': 18152, 'serv': whois.nic.ad.jp }
+    - { 'first': 18259, 'last': 18290, 'serv': whois.nic.ad.jp }
+    - { 'first': 18259, 'last': 18290, 'serv': whois.nic.ad.jp }
+    - { 'first': 20480, 'last': 21503, 'serv': whois.ripe.net }
+    - { 'first': 23552, 'last': 24575, 'serv': whois.apnic.net }
+    - { 'first': 23552, 'last': 23601, 'serv': whois.nic.or.kr }
+    - { 'first': 23612, 'last': 23643, 'serv': whois.nic.ad.jp }
+    - { 'first': 24576, 'last': 25599, 'serv': whois.ripe.net }
+    - { 'first': 26592, 'last': 26623, 'serv': whois.lacnic.net }
+    - { 'first': 27648, 'last': 28671, 'serv': whois.lacnic.net }
+    - { 'first': 28672, 'last': 29695, 'serv': whois.ripe.net }
+    - { 'first': 30980, 'last': 30999, 'serv': whois.afrinic.net }
+    - { 'first': 30720, 'last': 31743, 'serv': whois.ripe.net }
+    - { 'first': 34515, 'last': 34519, 'serv': whois.afrinic.net }
+    - { 'first': 33792, 'last': 35839, 'serv': whois.ripe.net }
+    - { 'first': 36864, 'last': 37887, 'serv': whois.afrinic.net }
+    - { 'first': 37888, 'last': 38911, 'serv': whois.apnic.net }
+    - { 'first': 38912, 'last': 39935, 'serv': whois.ripe.net }
+    - { 'first': 40960, 'last': 45055, 'serv': whois.ripe.net }
+    - { 'first': 45056, 'last': 46079, 'serv': whois.apnic.net }
+    - { 'first': 47104, 'last': 52223, 'serv': whois.ripe.net }
+    - { 'first': 52224, 'last': 53247, 'serv': whois.lacnic.net }
+    - { 'first': 55296, 'last': 56319, 'serv': whois.apnic.net }
+    - { 'first': 56320, 'last': 58367, 'serv': whois.ripe.net }
+    - { 'first': 58368, 'last': 59391, 'serv': whois.apnic.net }
+    - { 'first': 59392, 'last': 61439, 'serv': whois.ripe.net }
+    - { 'first': 61440, 'last': 61951, 'serv': whois.lacnic.net }
+    - { 'first': 61952, 'last': 62463, 'serv': whois.ripe.net }
+    - { 'first': 63488, 'last': 63999, 'serv': whois.apnic.net }
+    - { 'first': 64512, 'last': 65534, 'serv': whois.ripe.net }
+    - { 'first': 1, 'last': 63487, 'serv': whois.arin.net }
+as32_del:
+    - { 'first': 131072, 'last': 196607, 'serv': whois.apnic.net }
+    - { 'first': 196608, 'last': 262143, 'serv': whois.ripe.net }
+    - { 'first': 262144, 'last': 327679, 'serv': whois.lacnic.net }
+    - { 'first': 327680, 'last': 393215, 'serv': whois.afrinic.net }
+    - { 'first': 393216, 'last': 458751, 'serv': whois.arin.net }
+    - { 'first': 4200000000, 'last': 4294967294, 'serv': whois.ripe.net }
+tld_serv:
+    '.br.com': 'whois.centralnic.net'
+    '.cn.com': 'whois.centralnic.net'
+    '.de.com': 'whois.centralnic.net'
+    '.eu.com': 'whois.centralnic.net'
+    '.gb.com': 'whois.centralnic.net'
+    '.gb.net': 'whois.centralnic.net'
+    '.gr.com': 'whois.centralnic.net'
+    '.hu.com': 'whois.centralnic.net'
+    '.in.net': 'whois.centralnic.net'
+    '.no.com': 'whois.centralnic.net'
+    '.qc.com': 'whois.centralnic.net'
+    '.ru.com': 'whois.centralnic.net'
+    '.sa.com': 'whois.centralnic.net'
+    '.se.com': 'whois.centralnic.net'
+    '.se.net': 'whois.centralnic.net'
+    '.uk.com': 'whois.centralnic.net'
+    '.uk.net': 'whois.centralnic.net'
+    '.us.com': 'whois.centralnic.net'
+    '.uy.com': 'whois.centralnic.net'
+    '.za.com': 'whois.centralnic.net'
+    '.jpn.com': 'whois.centralnic.net'
+    '.web.com': 'whois.centralnic.net'
+    '.com': 'VERISIGN'
+    '.za.net': 'whois.za.net'
+    '.net': 'VERISIGN'
+    '.eu.org': 'whois.eu.org'
+    '.za.org': 'whois.za.org'
+    '.org': 'whois.pir.org'
+    '.edu': 'whois.educause.edu'
+    '.gov': 'whois.dotgov.gov'
+    '.int': 'whois.iana.org'
+    '.mil': null
+    '.e164.arpa': 'whois.ripe.net'
+    '.in-addr.arpa': 'ARPA'
+    '.arpa': 'whois.iana.org'
+    '.aero': 'whois.aero'
+    '.asia': 'whois.nic.asia'
+    '.biz': 'whois.biz'
+    '.cat': 'whois.cat'
+    '.coop': 'whois.nic.coop'
+    '.info': 'whois.afilias.net'
+    '.jobs': 'VERISIGN'
+    '.mobi': 'whois.dotmobiregistry.net'
+    '.museum': 'whois.museum'
+    '.name': 'whois.nic.name'
+    '.post': 'whois.dotpostregistry.net'
+    '.pro': 'whois.dotproregistry.net'
+    '.tel': 'whois.nic.tel'
+    '.travel': 'whois.nic.travel'
+    '.xxx': 'whois.nic.xxx'
+    '.academy': 'whois.donuts.co'
+    '.berlin': 'whois.berlin.tld-box.at'
+    '.bike': 'whois.donuts.co'
+    '.builders': 'whois.donuts.co'
+    '.buzz': 'whois.nic.buzz'
+    '.cab': 'whois.donuts.co'
+    '.camera': 'whois.donuts.co'
+    '.camp': 'whois.donuts.co'
+    '.careers': 'whois.donuts.co'
+    '.center': 'whois.donuts.co'
+    '.ceo': 'whois.nic.ceo'
+    '.clothing': 'whois.donuts.co'
+    '.codes': 'whois.donuts.co'
+    '.coffee': 'whois.donuts.co'
+    '.company': 'whois.donuts.co'
+    '.computer': 'whois.donuts.co'
+    '.construction': 'whois.donuts.co'
+    '.contractors': 'whois.donuts.co'
+    '.diamonds': 'whois.donuts.co'
+    '.directory': 'whois.donuts.co'
+    '.domains': 'whois.donuts.co'
+    '.education': 'whois.donuts.co'
+    '.email': 'whois.donuts.co'
+    '.enterprises': 'whois.donuts.co'
+    '.equipment': 'whois.donuts.co'
+    '.estate': 'whois.donuts.co'
+    '.farm': 'whois.donuts.co'
+    '.florist': 'whois.donuts.co'
+    '.gallery': 'whois.donuts.co'
+    '.glass': 'whois.donuts.co'
+    '.graphics': 'whois.donuts.co'
+    '.guru': 'whois.donuts.co'
+    '.holdings': 'whois.donuts.co'
+    '.holiday': 'whois.donuts.co'
+    '.house': 'whois.donuts.co'
+    '.immobilien': 'whois.unitedtld.com'
+    '.institute': 'whois.donuts.co'
+    '.international': 'whois.donuts.co'
+    '.kaufen': 'whois.unitedtld.com'
+    '.kitchen': 'whois.donuts.co'
+    '.kiwi': 'whois.dot-kiwi.com'
+    '.land': 'whois.donuts.co'
+    '.lighting': 'whois.donuts.co'
+    '.limo': 'whois.donuts.co'
+    '.management': 'whois.donuts.co'
+    '.menu': 'whois.nic.menu'
+    '.ninja': 'whois.unitedtld.com'
+    '.onl': 'whois.afilias-srs.net'
+    '.photography': 'whois.donuts.co'
+    '.photos': 'whois.donuts.co'
+    '.plumbing': 'whois.donuts.co'
+    '.recipes': 'whois.donuts.co'
+    '.repair': 'whois.donuts.co'
+    '.ruhr': 'whois.nic.ruhr'
+    '.sexy': 'whois.uniregistry.net'
+    '.shoes': 'whois.donuts.co'
+    '.singles': 'whois.donuts.co'
+    '.solar': 'whois.donuts.co'
+    '.solutions': 'whois.donuts.co'
+    '.support': 'whois.donuts.co'
+    '.systems': 'whois.donuts.co'
+    '.tattoo': 'whois.uniregistry.net'
+    '.technology': 'whois.donuts.co'
+    '.tips': 'whois.donuts.co'
+    '.today': 'whois.donuts.co'
+    '.training': 'whois.donuts.co'
+    '.uno': 'whois.nic.uno'
+    '.ventures': 'whois.donuts.co'
+    '.viajes': 'whois.donuts.co'
+    '.voyage': 'whois.donuts.co'
+    '.wang': 'whois.gtld.knet.cn'
+    '.wien': 'whois.wien.tld-box.at'
+    '.xn--3bst00m': 'whois.gtld.knet.cn'
+    '.xn--3ds443g': 'whois.afilias-srs.net'
+    '.xn--55qw42g': 'whois.conac.cn'
+    '.xn--6qq986b3xl': 'whois.gtld.knet.cn'
+    '.xn--80asehdb': 'whois.online.rs.corenic.net'
+    '.xn--80aswg': 'whois.site.rs.corenic.net'
+    '.xn--fiq228c5hs': 'whois.afilias-srs.net'
+    '.xn--ngbc5azd': 'whois.nic.xn--ngbc5azd'
+    '.xn--q9jyb4c': 'domain-registry-whois.l.google.com'
+    '.xn--unup4y': 'whois.donuts.co'
+    '.xn--zfr164b': 'whois.conac.cn'
+    '.ac': 'whois.nic.ac'
+    '.ad': null
+    '.ae': 'whois.aeda.net.ae'
+    '.af': 'whois.nic.af'
+    '.ag': 'whois.nic.ag'
+    '.ai': 'whois.ai'
+    '.al': null
+    '.am': 'whois.amnic.net'
+    '.an': null
+    '.ao': null
+    '.aq': null
+    '.ar': 'WEB'
+    '.as': 'whois.nic.as'
+    '.priv.at': 'whois.nic.priv.at'
+    '.at': 'whois.nic.at'
+    '.au': 'whois.audns.net.au'
+    '.aw': null
+    '.ax': 'whois.ax'
+    '.az': 'WEB'
+    '.ba': 'WEB'
+    '.bb': 'WEB'
+    '.bd': 'WEB'
+    '.be': 'whois.dns.be'
+    '.bf': null
+    '.bg': 'whois.register.bg'
+    '.bh': null
+    '.bi': 'whois1.nic.bi'
+    '.bj': 'whois.nic.bj'
+    '.bm': 'WEB'
+    '.bn': 'whois.bn'
+    '.bo': 'whois.nic.bo'
+    '.br': 'whois.registro.br'
+    '.bs': 'WEB'
+    '.bt': 'WEB'
+    '.bv': null
+    '.by': 'whois.cctld.by'
+    '.bw': 'whois.nic.net.bw'
+    '.bz': 'AFILIAS'
+    '.co.ca': 'whois.co.ca'
+    '.ca': 'whois.cira.ca'
+    '.cc': 'VERISIGN'
+    '.cd': 'whois.nic.cd'
+    '.cf': 'whois.dot.cf'
+    '.cg': 'WEB'
+    '.ch': 'whois.nic.ch'
+    '.ci': 'whois.nic.ci'
+    '.ck': null
+    '.cl': 'whois.nic.cl'
+    '.cm': 'whois.netcom.cm'
+    '.edu.cn': 'whois.edu.cn'
+    '.cn': 'whois.cnnic.cn'
+    '.uk.co': 'whois.uk.co'
+    '.co': 'whois.nic.co'
+    '.cr': 'WEB'
+    '.cu': 'WEB'
+    '.cv': 'WEB'
+    '.cw': null
+    '.cx': 'whois.nic.cx'
+    '.cy': 'WEB'
+    '.cz': 'whois.nic.cz'
+    '.de': 'whois.denic.de'
+    '.dj': 'WEB'
+    '.dk': 'whois.dk-hostmaster.dk'
+    '.dm': 'whois.nic.dm'
+    '.do': 'WEB'
+    '.dz': 'whois.nic.dz'
+    '.ec': 'whois.nic.ec'
+    '.ee': 'whois.tld.ee'
+    '.eg': null
+    '.er': null
+    '.es': 'WEB'
+    '.et': null
+    '.eu': 'whois.eu'
+    '.fi': 'whois.fi'
+    '.fj': 'whois.usp.ac.fj'
+    '.fk': null
+    '.fm': 'WEB'
+    '.fo': 'whois.nic.fo'
+    '.fr': 'whois.nic.fr'
+    '.ga': 'whois.dot.ga'
+    '.gb': null
+    '.gd': 'whois.nic.gd'
+    '.ge': 'WEB'
+    '.gf': 'WEB'
+    '.gg': 'whois.gg'
+    '.gh': 'WEB'
+    '.gi': 'AFILIAS'
+    '.gl': 'whois.nic.gl'
+    '.gm': 'WEB'
+    '.gn': null
+    '.gp': 'WEB'
+    '.gq': null
+    '.gr': 'WEB'
+    '.gs': 'whois.nic.gs'
+    '.gt': 'WEB'
+    '.gu': 'WEB'
+    '.gw': null
+    '.gy': 'whois.registry.gy'
+    '.hk': 'whois.hkirc.hk'
+    '.hm': 'whois.registry.hm'
+    '.hn': 'whois.nic.hn'
+    '.hr': 'whois.dns.hr'
+    '.ht': 'whois.nic.ht'
+    '.hu': 'whois.nic.hu'
+    '.id': 'whois.pandi.or.id'
+    '.ie': 'whois.domainregistry.ie'
+    '.il': 'whois.isoc.org.il'
+    '.im': 'whois.nic.im'
+    '.in': 'whois.inregistry.net'
+    '.io': 'whois.nic.io'
+    '.iq': 'whois.cmc.iq'
+    '.ir': 'whois.nic.ir'
+    '.is': 'whois.isnic.is'
+    '.it': 'whois.nic.it'
+    '.je': 'whois.je'
+    '.jm': null
+    '.jo': 'WEB'
+    '.jp': 'whois.jprs.jp'
+    '.ke': 'whois.kenic.or.ke'
+    '.kg': 'whois.domain.kg'
+    '.kh': null
+    '.ki': 'whois.nic.mu'
+    '.km': null
+    '.kn': 'WEB'
+    '.kp': null
+    '.kr': 'whois.kr'
+    '.kw': 'WEB'
+    '.ky': 'WEB'
+    '.kz': 'whois.nic.kz'
+    '.la': 'whois.nic.la'
+    '.lb': 'WEB'
+    '.lc': 'AFILIAS'
+    '.li': 'whois.nic.li'
+    '.lk': 'whois.nic.lk'
+    '.lr': null
+    '.ls': 'WEB'
+    '.lt': 'whois.domreg.lt'
+    '.lu': 'whois.dns.lu'
+    '.lv': 'whois.nic.lv'
+    '.ly': 'whois.nic.ly'
+    '.ma': 'whois.iam.net.ma'
+    '.mc': null
+    '.md': 'WEB'
+    '.me': 'whois.nic.me'
+    '.mg': 'whois.nic.mg'
+    '.mh': null
+    '.mk': 'WEB'
+    '.ml': 'whois.dot.ml'
+    '.mm': null
+    '.mn': 'whois.nic.mn'
+    '.mo': 'WEB'
+    '.mp': null
+    '.mq': 'WEB'
+    '.mr': null
+    '.ms': 'whois.nic.ms'
+    '.mt': 'WEB'
+    '.mu': 'whois.nic.mu'
+    '.mv': null
+    '.mw': 'WEB'
+    '.mx': 'whois.mx'
+    '.my': 'whois.domainregistry.my'
+    '.mz': null
+    '.na': 'whois.na-nic.com.na'
+    '.nc': 'whois.nc'
+    '.ne': null
+    '.nf': 'whois.nic.nf'
+    '.ng': 'whois.nic.net.ng'
+    '.ni': 'WEB'
+    '.nl': 'whois.domain-registry.nl'
+    '.no': 'whois.norid.no'
+    '.np': 'WEB'
+    '.nr': 'WEB'
+    '.nu': 'whois.iis.nu'
+    '.nz': 'whois.srs.net.nz'
+    '.om': 'whois.registry.om'
+    '.pa': 'WEB'
+    '.pe': 'kero.yachay.pe'
+    '.pf': 'whois.registry.pf'
+    '.pg': null
+    '.ph': 'WEB'
+    '.pk': 'WEB'
+    '.co.pl': 'whois.co.pl'
+    '.pl': 'whois.dns.pl'
+    '.pm': 'whois.nic.pm'
+    '.pn': 'WEB'
+    '.pr': 'whois.nic.pr'
+    '.ps': 'whois.pnina.ps'
+    '.pt': 'whois.dns.pt'
+    '.pw': 'whois.nic.pw'
+    '.py': 'WEB'
+    '.qa': 'whois.registry.qa'
+    '.re': 'whois.nic.re'
+    '.ro': 'whois.rotld.ro'
+    '.rs': 'whois.rnids.rs'
+    '.edu.ru': 'whois.informika.ru'
+    '.ru': 'whois.tcinet.ru'
+    '.rw': 'whois.ricta.org.rw'
+    '.sa': 'whois.nic.net.sa'
+    '.sb': 'whois.nic.sb'
+    '.sc': 'AFILIAS'
+    '.sd': null
+    '.se': 'whois.iis.se'
+    '.sg': 'whois.sgnic.sg'
+    '.sh': 'whois.nic.sh'
+    '.si': 'whois.arnes.si'
+    '.sj': null
+    '.sk': 'whois.sk-nic.sk'
+    '.sl': 'whois.nic.sl'
+    '.sm': 'whois.nic.sm'
+    '.sn': 'whois.nic.sn'
+    '.so': 'whois.nic.so'
+    '.sr': null
+    '.st': 'whois.nic.st'
+    '.su': 'whois.tcinet.ru'
+    '.sv': 'WEB'
+    '.sx': 'whois.sx'
+    '.sy': 'whois.tld.sy'
+    '.sz': null
+    '.tc': 'whois.adamsnames.tc'
+    '.td': 'WEB'
+    '.tf': 'whois.nic.tf'
+    '.tg': 'WEB'
+    '.th': 'whois.thnic.co.th'
+    '.tj': 'WEB'
+    '.tk': 'whois.dot.tk'
+    '.tl': 'whois.nic.tl'
+    '.tm': 'whois.nic.tm'
+    '.tn': 'whois.ati.tn'
+    '.to': 'whois.tonic.to'
+    '.tp': null
+    '.tr': 'whois.nic.tr'
+    '.tt': 'WEB'
+    '.tv': 'VERISIGN'
+    '.tw': 'whois.twnic.net.tw'
+    '.tz': 'whois.tznic.or.tz'
+    '.biz.ua': 'whois.biz.ua'
+    '.co.ua': 'whois.co.ua'
+    '.pp.ua': 'whois.pp.ua'
+    '.ua': 'whois.ua'
+    '.ug': 'whois.co.ug'
+    '.ac.uk': 'whois.ja.net'
+    '.bl.uk': null
+    '.british-library.uk': null
+    '.gov.uk': 'whois.ja.net'
+    '.icnet.uk': null
+    '.jet.uk': null
+    '.mod.uk': null
+    '.nhs.uk': null
+    '.nls.uk': null
+    '.parliament.uk': null
+    '.police.uk': null
+    '.uk': 'whois.nic.uk'
+    '.fed.us': 'whois.nic.gov'
+    '.us': 'whois.nic.us'
+    '.com.uy': 'WEB'
+    '.uy': 'whois.nic.org.uy'
+    '.uz': 'whois.cctld.uz'
+    '.va': null
+    '.vc': 'AFILIAS'
+    '.ve': 'whois.nic.ve'
+    '.vg': 'whois.adamsnames.tc'
+    '.vi': 'WEB'
+    '.vn': 'WEB'
+    '.vu': 'WEB'
+    '.wf': 'whois.nic.wf'
+    '.ws': 'whois.website.ws'
+    '.ye': null
+    '.yt': 'whois.nic.yt'
+    '.ac.za': 'whois.ac.za'
+    '.alt.za': 'whois.alt.za'
+    '.co.za': 'whois.registry.net.za'
+    '.gov.za': 'whois.gov.za'
+    '.net.za': 'whois.net.za'
+    '.org.za': 'WEB'
+    '.web.za': 'whois.web.za'
+    '.za': null
+    '.zm': null
+    '.zw': null
+    '.xn--3e0b707e': 'whois.kr'
+    '.xn--45brj9c': 'whois.inregistry.net'
+    '.xn--80ao21a': 'whois.nic.kz'
+    '.xn--90a3ac': 'whois.rnids.rs'
+    '.xn--clchc0ea0b2g2a9gcd': 'whois.sgnic.sg'
+    '.xn--fiqs8s': 'cwhois.cnnic.cn'
+    '.xn--fiqz9s': 'cwhois.cnnic.cn'
+    '.xn--fpcrj9c3d': 'whois.inregistry.net'
+    '.xn--fzc2c9e2c': 'whois.nic.lk'
+    '.xn--gecrj9c': 'whois.inregistry.net'
+    '.xn--h2brj9c': 'whois.inregistry.net'
+    '.xn--j1amh': 'whois.dotukr.com'
+    '.xn--j6w193g': 'whois.hkirc.hk'
+    '.xn--kprw13d': 'whois.twnic.net.tw'
+    '.xn--kpry57d': 'whois.twnic.net.tw'
+    '.xn--l1acc': 'whois.nic.mn'
+    '.xn--lgbbat1ad8j': 'whois.nic.dz'
+    '.xn--mgb9awbf': 'whois.registry.om'
+    '.xn--mgba3a4f16a': 'whois.nic.ir'
+    '.xn--mgbaam7a8h': 'whois.aeda.net.ae'
+    '.xn--mgbayh7gpa': 'WEB'
+    '.xn--mgbbh1a71e': 'whois.inregistry.net'
+    '.xn--mgbc0a9azcg': null
+    '.xn--mgberp4a5d4ar': 'whois.nic.net.sa'
+    '.xn--mgbx4cd0ab': 'whois.domainregistry.my'
+    '.xn--o3cw4h': 'whois.thnic.co.th'
+    '.xn--ogbpf8fl': 'whois.tld.sy'
+    '.xn--p1ai': 'whois.tcinet.ru'
+    '.xn--pgbs0dh': null
+    '.xn--s9brj9c': 'whois.inregistry.net'
+    '.xn--wgbh1c': 'whois.dotmasr.eg'
+    '.xn--wgbl6a': 'whois.registry.qa'
+    '.xn--xkc2al3hye2a': 'whois.nic.lk'
+    '.xn--xkc2dl3a5ee0h': 'whois.inregistry.net'
+    '.xn--yfro4i67o': 'whois.sgnic.sg'
+    '.xn--ygbi2ammx': 'whois.pnina.ps'
+    '-dom': 'whois.networksolutions.com'
+    '-org': 'whois.networksolutions.com'
+    '-hst': 'whois.networksolutions.com'
+    '-arin': 'whois.arin.net'
+    '-ripe': 'whois.ripe.net'
+    '-mnt': 'whois.ripe.net'
+    '-lacnic': 'whois.lacnic.net'
+    '-afrinic': 'whois.afrinic.net'
+    '-ap': 'whois.apnic.net'
+    '-cn': 'whois.cnnic.cn'
+    '-cz': 'whois.nic.cz'
+    '-dk': 'whois.dk-hostmaster.dk'
+    '-il': 'whois.isoc.org.il'
+    '-is': 'whois.isnic.is'
+    '-kg': 'whois.domain.kg'
+    '-ti': 'whois.telstra.net'
+    '-tw': 'whois.twnic.net.tw'
+    '-coop': 'whois.nic.coop'
+    '-frnic': 'whois.nic.fr'
+    '-gandi': 'whois.gandi.net'
+    '-kenic': 'whois.kenic.or.ke'
+    '-lrms': 'whois.afilias.info'
+    '-metu': 'whois.nic.tr'
+    '-nicat': 'whois.nic.at'
+    '-nicci': 'whois.nic.ci'
+    '-nicir': 'whois.nic.ir'
+    '-norid': 'whois.norid.no'
+    '-rotld': 'whois.rotld.ro'
+    '-sgnic': 'whois.sgnic.sg'
+    '-tel': 'whois.nic.tel'
+    '-uanic': 'whois.ua'
+    '-cunic': 'whois.cunic.ua'
+    '-uynic': 'whois.nic.org.uy'
+    '-sixxs': 'whois.sixxs.net'
+servers_charset:
+    'whois.cat': { charset: 'utf-8', options: '-C UTF-8' }
+    'whois.conac.cn': { charset: 'utf-8', options: null }
+    'whois.corenic.net': { charset: 'utf-8', options: '-C UTF-8' }
+    'whois.online.rs.corenic.net': { charset: 'utf-8', options: '-C UTF-8' }
+    'whois.site.rs.corenic.net': { charset: 'utf-8', options: '-C UTF-8' }
+    'whois.museum': { charset: 'utf-8', options: '-C UTF-8' }
+    'whois.aeda.net.ae': { charset: 'utf-8', options: null }
+    'whois.ax': { charset: 'iso-8859-1', options: null }
+    'whois.registro.br': { charset: 'iso-8859-1', options: null }
+    'whois.cira.ca': { charset: 'iso-8859-1', options: null }
+    'whois.nic.ch': { charset: 'utf-8', options: null }
+    'whois.nic.cl': { charset: 'iso-8859-1', options: null }
+    'whois.cnnic.cn': { charset: 'utf-8', options: null }
+    'cwhois.cnnic.cn': { charset: 'utf-8', options: null }
+    'whois.nic.cz': { charset: 'utf-8', options: null }
+    'whois.denic.de': { charset: 'utf-8', options: null }
+    'whois.enum.denic.de': { charset: 'utf-8', options: null }
+    'whois.dk-hostmaster.dk': { charset: 'utf-8', options: '--charset=utf-8' }
+    'whois.eenet.ee': { charset: 'iso-8859-1', options: null }
+    'whois.eu': { charset: 'utf-8', options: null }
+    'whois.fi': { charset: 'iso-8859-1', options: null }
+    'whois.nic.fo': { charset: 'utf-8', options: null }
+    'whois.nic.fr': { charset: 'utf-8', options: null }
+    'whois.hkirc.hk': { charset: 'utf-8', options: null }
+    'whois.nic.hr': { charset: 'utf-8', options: null }
+    'whois.nic.hu': { charset: 'iso-8859-1', options: null }
+    'whois.nic.ir': { charset: 'utf-8', options: null }
+    'whois.isnic.is': { charset: 'iso-8859-1', options: null }
+    'whois.nic.it': { charset: 'utf-8', options: null }
+    'whois.jprs.jp': { charset: 'iso-2022-jp', options: null }
+    'whois.nic.ad.jp': { charset: 'iso-2022-jp', options: null }
+    'whois.nic.or.kr': { charset: 'utf-8', options: null }
+    'whois.kr': { charset: 'utf-8', options: null }
+    'whois.nic.kz': { charset: 'rk1048', options: null }
+    'whois.nic.li': { charset: 'utf-8', options: null }
+    'whois.domreg.lt': { charset: 'utf-8', options: null }
+    'whois.dns.lu': { charset: 'iso-8859-1', options: null }
+    'whois.nic.mu': { charset: 'utf-8', options: null }
+    'whois.norid.no': { charset: 'iso-8859-1', options: null }
+    'whois.iis.nu': { charset: 'utf-8', options: null }
+    'whois.registry.pf': { charset: 'utf-8', options: null }
+    'whois.dns.pt': { charset: 'iso-8859-1', options: null }
+    'whois.registry.qa': { charset: 'utf-8', options: null }
+    'whois.nic.re': { charset: 'utf-8', options: null }
+    'whois.rnids.rs': { charset: 'utf-8', options: null }
+    'whois.nic.net.sa': { charset: 'utf-8', options: null }
+    'whois.iis.se': { charset: 'utf-8', options: null }
+    'whois.sgnic.sg': { charset: 'utf-8', options: null }
+    'whois.tld.sy': { charset: 'utf-8', options: null }
+    'whois.thnic.co.th': { charset: 'utf-8', options: null }
+    'whois.ati.tn': { charset: 'windows-1252', options: null }
+    'whois.nic.tr': { charset: 'iso-8859-9', options: null }
+    'whois.twnic.net.tw': { charset: 'utf-8', options: null }
+    'whois.biz.ua': { charset: 'utf-8', options: null }
+    'whois.co.ua': { charset: 'utf-8', options: null }
+    'whois.pp.ua': { charset: 'utf-8', options: null }
+    'whois.ua': { charset: 'utf-8', options: null }
+    'whois.nic.org.uy': { charset: 'utf-8', options: null }
+    'whois.nic.wf': { charset: 'utf-8', options: null }
+    'whois.nic.yt': { charset: 'utf-8', options: null }
