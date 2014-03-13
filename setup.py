@@ -30,9 +30,8 @@ Has an optional MongoDB-backed result cache.
         author='Henry Stern',
         author_email='henry@stern.ca',
         packages=['dwhois'],
-        package_dir={'dwhois': 'src/dwhois'},
         package_data={'dwhois': ['default.conf']},
-        scripts=['dwhois','dwhois-worker','dwhois-user'],
+        scripts=['bin/dwhois','bin/dwhois-worker','bin/dwhois-user'],
         install_requires=['requests >= 2.2.1', 'pymongo >= 2.6.3'],
         url='https://github.com/hstern/dwhois',
         classifiers=[
