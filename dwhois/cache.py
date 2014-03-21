@@ -37,6 +37,7 @@ class Cache:
         self.client = pymongo.MongoClient(url)
         self.db = self.client[db]
         self.collection = self.db[collection]
+        self.collection.ensure_index('domain_name')
 
     def add(self, v):
         """
