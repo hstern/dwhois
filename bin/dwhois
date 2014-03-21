@@ -47,37 +47,46 @@ def format(blob, out):
     print 'Submitted: %d' % blob['submitted']
     print blob['whois']
 
-def action(domain, json_out=False, check=False, submit=False):
+def action(domains, json_out=False, check=False, submit=False):
     if not check and not submit:
-        try:
-            if use_cache:
-                if domain in cache:
-                    data = cache.get(domain)
+        for domain in domains:
+            try:
+                if use_cache:
+                    if domain in cache:
+                        data = cache.get(domain)
+                    else:
+                        data = dwhois.get(domain)
+                        cache.add(data)
                 else:
                     data = dwhois.get(domain)
-                    cache.add(data)
-            else:
-                data = dwhois.get(domain)
 
-            if json_out:
-                if '_id' in data:
-                    del data['_id']
+                if json_out:
+                    if '_id' in data:
+                        del data['_id']
 
-                print json.dumps(data)
-            else:
-                format(data, sys.stdout)
-        except QueryError, e:
-            print 'Domain: %s' % domain
-            print 'ERROR: %s' % e.message
+                    print json.dumps(data)
+                else:
+                    format(data, sys.stdout)
+            except QueryError, e:
+                print 'Domain: %s' % domain
+                print 'ERROR: %s' % e.message
     else:
         if check and submit:
-            if (use_cache and not domain in cache) or dwhois.check(domain):
-                print 'Submitting: %s' % domain
-                dwhois.submit(domain)
+            for domain in domains:
+                if (use_cache and not domain in cache) or dwhois.check(domain):
+                    print 'Submitting: %s' % domain
+                    dwhois.submit(domain)
         elif check:
-            print '%s: %s' % (domain, bool((use_cache and domain in cache) or dwhois.check(domain)))
+            for domain in domains:
+                if json_out:
+                    print json.dumps({
+                        'domain' : domain,
+                        'available' : bool((use_cache and domain in cache) or dwhois.check(domain))
+                        })
+                else:
+                    print '%s: %s' % (domain, bool((use_cache and domain in cache) or dwhois.check(domain)))
         else:
-            dwhois.submit(domain)
+            dwhois.submit(domains)
 
 if args.files:
     for fn in args.files:
@@ -86,11 +95,13 @@ if args.files:
         else:
             f = open(fn)
 
+        domains = set()
         for line in f:
-            domain = line.strip()
-            action(domain, args.json, args.check, args.submit)
+            domains.add(line.strip())
+
+        action(domains, args.json, args.check, args.submit)
 
         f.close()
 
-for domain in args.domains:
-    action(domain, args.json, args.check, args.submit)
+if args.domains:
+    action(set(args.domains), args.json, args.check, args.submit)
