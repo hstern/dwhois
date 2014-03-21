@@ -32,7 +32,10 @@ Has an optional MongoDB-backed result cache.
         packages=['dwhois', 'dwhois.tests'],
         package_data={'dwhois': ['default.conf']},
         scripts=['bin/dwhois','bin/dwhois-worker','bin/dwhois-user'],
-        install_requires=['requests >= 2.2.1', 'pymongo >= 2.6.3'],
+        install_requires=[
+            'requests >= 2.2.1',
+            'pymongo >= 2.6.3',
+            'chardet >= 2.0.1'],
         url='https://github.com/hstern/dwhois',
         classifiers=[
             'Development Status :: 3 - Alpha',
