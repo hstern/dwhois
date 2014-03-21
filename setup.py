@@ -29,7 +29,7 @@ Has an optional MongoDB-backed result cache.
         license='LGPL v3',
         author='Henry Stern',
         author_email='henry@stern.ca',
-        packages=['dwhois'],
+        packages=['dwhois', 'dwhois.tests'],
         package_data={'dwhois': ['default.conf']},
         scripts=['bin/dwhois','bin/dwhois-worker','bin/dwhois-user'],
         install_requires=['requests >= 2.2.1', 'pymongo >= 2.6.3'],
@@ -44,5 +44,5 @@ Has an optional MongoDB-backed result cache.
             'Topic :: Security',
             'Topic :: System :: Networking',
             ],
-        test_suite='tests',
+        test_suite='dwhois.tests',
         )
