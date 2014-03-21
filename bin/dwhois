@@ -102,7 +102,7 @@ def action(domains, json_out=False, check=False, submit=False, offline=False):
 
                 if json_out:
                     print json.dumps({
-                        'domain' : domain,
+                        'domain_name' : domain,
                         'available' : available
                         })
                 else:
