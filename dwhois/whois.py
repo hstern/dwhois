@@ -20,7 +20,6 @@ import tempfile
 import re
 
 from dwhois.config import whois_path, whois_strict
-import chardet
 
 class WhoisError(Exception):
     """
@@ -68,9 +67,7 @@ def whois(domain):
     try:
         subprocess.check_call([whois_path, '--', domain], stdout=buf, stderr=errbuf)
         buf.seek(0)
-        res = buf.read()
-
-        return res.decode(chardet.detect(res)['encoding'])
+        return buf.read()
     except subprocess.CalledProcessError:
         errbuf.seek(0)
         raise WhoisError, "whois failed: '%s'" % errbuf.read().rstrip()
