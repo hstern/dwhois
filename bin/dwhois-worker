@@ -41,7 +41,7 @@ for domain in worker.queue():
             worker.push_results(domain, whois_data)
             if use_cache:
                 cache.add({'domain_name':domain, 'submitted':time.time(),
-                    'whois': whois_data})
+                    'whois': bytes(whois_data)})
         except WhoisError, e:
             print e.message
             sys.stdout.flush()
