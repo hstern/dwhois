@@ -33,10 +33,17 @@ parser.add_argument('--json','-j', help='json output', action='store_true')
 parser.add_argument('--files','-f', help='file with domains', nargs='*')
 parser.add_argument('--check','-c', help='check instead of get', action='store_true')
 parser.add_argument('--submit','-s', help='submit domains', action='store_true')
+parser.add_argument('--offline','-O',help='work offline', action='store_true')
 args = parser.parse_args()
 
 if not args.files and not args.domains:
     parser.error('Domains or files required')
+
+if args.offline and not use_cache:
+    parser.error('Cannot work offline with cache disabled')
+
+if args.submit and args.offline:
+    parser.error('Cannot submit offline')
 
 dwhois = DWhois(api_base_url, user, password)
 if use_cache:
@@ -47,16 +54,18 @@ def format(blob, out):
     print 'Submitted: %d' % blob['submitted']
     print blob['whois']
 
-def action(domains, json_out=False, check=False, submit=False):
+def action(domains, json_out=False, check=False, submit=False, offline=False):
     if not check and not submit:
         for domain in domains:
             try:
                 if use_cache:
                     if domain in cache:
                         data = cache.get(domain)
-                    else:
+                    elif not offline:
                         data = dwhois.get(domain)
                         cache.add(data)
+                    else:
+                        raise QueryError, 'Domain \'%s\' not in cache' % domain
                 else:
                     data = dwhois.get(domain)
 
@@ -78,13 +87,20 @@ def action(domains, json_out=False, check=False, submit=False):
                     dwhois.submit(domain)
         elif check:
             for domain in domains:
+                if use_cache and domain in cache:
+                    available = True
+                elif not offline:
+                    available = dwhois.check(domain)
+                else:
+                    available = False
+
                 if json_out:
                     print json.dumps({
                         'domain' : domain,
-                        'available' : bool((use_cache and domain in cache) or dwhois.check(domain))
+                        'available' : available
                         })
                 else:
-                    print '%s: %s' % (domain, bool((use_cache and domain in cache) or dwhois.check(domain)))
+                    print '%s: %s' % (domain, available)
         else:
             dwhois.submit(domains)
 
@@ -99,9 +115,11 @@ if args.files:
         for line in f:
             domains.append(line.strip())
 
-        action(domains, args.json, args.check, args.submit)
+        action(domains, json_out=args.json,
+                check=args.check, submit=args.submit, offline=args.offline)
 
         f.close()
 
 if args.domains:
-    action(args.domains, args.json, args.check, args.submit)
+    action(args.domains, json_out=args.json,
+            check=args.check, submit=args.submit, offline=args.offline)
