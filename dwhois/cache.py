@@ -15,6 +15,9 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+import copy
+
+import bson
 import pymongo
 
 class Cache:
@@ -49,6 +52,11 @@ class Cache:
         """
         if 'domain_name' not in v:
             raise KeyError, 'domain'
+
+        if 'whois' in v:
+            v = copy.deepcopy(v)
+            v['whois'] = bson.binary.Binary(v['whois'])
+
         self.collection.insert(v)
 
     def get(self, domain, one=True):
