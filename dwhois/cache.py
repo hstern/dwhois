@@ -53,7 +53,7 @@ class Cache:
         if 'domain_name' not in v:
             raise KeyError, 'domain'
 
-        if 'whois' in v:
+        if 'whois' in v and type(v['whois']) == bytes:
             v = copy.deepcopy(v)
             v['whois'] = bson.binary.Binary(v['whois'])
 
