@@ -18,6 +18,7 @@
 import copy
 
 import bson
+import chardet
 import pymongo
 
 class Cache:
@@ -77,11 +78,25 @@ class Cache:
         """
         if one:
             rval = self.collection.find_one({'domain_name':domain})
-            if rval:
-                return rval
-            raise KeyError, domain
+
+            if not rval:
+                raise KeyError, domain
+
+            if 'whois' in rval and type(rval['whois']) == bson.binary.Binary:
+                whois = bytes(rval['whois'])
+                encoding = chardet.detect(whois)['encoding']
+                rval['whois'] = whois.decode(encoding)
+
+            return rval
         else:
-            return self.collection.find({'domain_name':domain})
+            rval = list()
+            for record in self.collection.find({'domain_name':domain}):
+                if 'whois' in record and type(record['whois']) == bson.binary.Binary:
+                    whois = bytes(record['whois'])
+                    encoding = chardet.detect(whois)['encoding']
+                    record['whois'] = whois.decode(encoding)
+                rval.append(record)
+            return rval
 
     def __contains__(self, domain):
         """
