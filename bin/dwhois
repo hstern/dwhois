@@ -95,13 +95,13 @@ if args.files:
         else:
             f = open(fn)
 
-        domains = set()
+        domains = list()
         for line in f:
-            domains.add(line.strip())
+            domains.append(line.strip())
 
         action(domains, args.json, args.check, args.submit)
 
         f.close()
 
 if args.domains:
-    action(set(args.domains), args.json, args.check, args.submit)
+    action(args.domains, args.json, args.check, args.submit)
