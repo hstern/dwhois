@@ -20,7 +20,7 @@
 from setuptools import setup
 
 setup(name='dwhois',
-        version='0.8',
+        version='0.9',
         description='Distributed WHOIS',
         long_description="""
 Client and worker for a database of WHOIS records accessed via HTTP.
