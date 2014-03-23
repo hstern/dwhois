@@ -111,6 +111,7 @@ class Worker:
 
         upload_url = urlparse.urljoin(self.upload_base_url, urllib.quote(domain, safe=''))
 
+        r = None
         try:
             r = requests.put(upload_url,
                 auth=(self.user,self.password),
@@ -120,4 +121,7 @@ class Worker:
             r.raise_for_status()
         except (requests.exceptions.HTTPError,
                 requests.exceptions.ConnectionError), e:
-            raise WorkerError, '%s: %s' % (e.message, r.text.strip()[:80]), sys.exc_traceback
+            if r:
+                raise WorkerError, '%s: %s' % (e.message, r.text.strip()[:80]), sys.exc_traceback
+            else:
+                raise WorkerError, e.message, sys.exc_traceback

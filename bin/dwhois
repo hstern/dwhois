@@ -1,0 +1,131 @@
+#!/usr/bin/python
+
+# dwhois - Distributed WHOIS
+# Copyright (C) 2014  Henry Stern <henry@stern.ca>
+#
+# This library is free software; you can redistribute it and/or
+# modify it under the terms of the GNU Lesser General Public
+# License as published by the Free Software Foundation; either
+# version 2.1 of the License, or (at your option) any later version.
+#
+# This library is distributed in the hope that it will be useful,
+# but WITHOUT ANY WARRANTY; without even the implied warranty of
+# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU
+# Lesser General Public License for more details.
+#
+# You should have received a copy of the GNU Lesser General Public
+# License along with this library; if not, write to the Free Software
+# Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+
+import argparse
+import json
+import sys
+
+from dwhois.query import DWhois, QueryError
+from dwhois.config import user, password, api_base_url, use_cache, cache_url, cache_db, cache_collection
+
+if use_cache:
+    from dwhois.cache import Cache
+
+parser = argparse.ArgumentParser()
+parser.add_argument('domains', help='list of domains', nargs='*')
+parser.add_argument('--json','-j', help='json output', action='store_true')
+parser.add_argument('--files','-f', help='file with domains', nargs='*')
+parser.add_argument('--check','-c', help='check instead of get', action='store_true')
+parser.add_argument('--submit','-s', help='submit domains', action='store_true')
+parser.add_argument('--offline','-O',help='work offline', action='store_true')
+args = parser.parse_args()
+
+if not args.files and not args.domains:
+    parser.error('Domains or files required')
+
+if args.offline and not use_cache:
+    parser.error('Cannot work offline with cache disabled')
+
+if args.submit and args.offline:
+    parser.error('Cannot submit offline')
+
+dwhois = DWhois(api_base_url, user, password)
+if use_cache:
+    cache = Cache(cache_url, cache_db, cache_collection)
+
+def format(blob, out):
+    print 'Domain: %s' % blob['domain_name']
+    print 'Submitted: %d' % blob['submitted']
+    print blob['whois']
+
+def action(domains, json_out=False, check=False, submit=False, offline=False):
+    if not check and not submit:
+        for domain in domains:
+            try:
+                if use_cache:
+                    if domain in cache:
+                        data = cache.get(domain)
+                    elif not offline:
+                        data = dwhois.get(domain)
+                        cache.add(data)
+                    else:
+                        raise QueryError, 'Domain \'%s\' not in cache' % domain
+                else:
+                    data = dwhois.get(domain)
+
+                if json_out:
+                    if '_id' in data:
+                        del data['_id']
+
+                    print json.dumps(data)
+                else:
+                    format(data, sys.stdout)
+            except QueryError, e:
+                if json_out:
+                    print json.dumps({
+                            'domain_name' : domain,
+                            'error' : e.message
+                            })
+                else:
+                    print 'Domain: %s' % domain
+                    print 'ERROR: %s' % e.message
+    else:
+        if check and submit:
+            for domain in domains:
+                if (use_cache and not domain in cache) or dwhois.check(domain):
+                    print 'Submitting: %s' % domain
+                    dwhois.submit(domain)
+        elif check:
+            for domain in domains:
+                if use_cache and domain in cache:
+                    available = True
+                elif not offline:
+                    available = dwhois.check(domain)
+                else:
+                    available = False
+
+                if json_out:
+                    print json.dumps({
+                        'domain_name' : domain,
+                        'available' : available
+                        })
+                else:
+                    print '%s: %s' % (domain, available)
+        else:
+            dwhois.submit(domains)
+
+if args.files:
+    for fn in args.files:
+        if fn == '-':
+            f = sys.stdin
+        else:
+            f = open(fn)
+
+        domains = list()
+        for line in f:
+            domains.append(line.strip())
+
+        action(domains, json_out=args.json,
+                check=args.check, submit=args.submit, offline=args.offline)
+
+        f.close()
+
+if args.domains:
+    action(args.domains, json_out=args.json,
+            check=args.check, submit=args.submit, offline=args.offline)

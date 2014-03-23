@@ -15,6 +15,10 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+import copy
+
+import bson
+import chardet
 import pymongo
 
 class Cache:
@@ -37,6 +41,7 @@ class Cache:
         self.client = pymongo.MongoClient(url)
         self.db = self.client[db]
         self.collection = self.db[collection]
+        self.collection.ensure_index('domain_name')
 
     def add(self, v):
         """
@@ -48,6 +53,11 @@ class Cache:
         """
         if 'domain_name' not in v:
             raise KeyError, 'domain'
+
+        if 'whois' in v and type(v['whois']) == bytes:
+            v = copy.deepcopy(v)
+            v['whois'] = bson.binary.Binary(v['whois'])
+
         self.collection.insert(v)
 
     def get(self, domain, one=True):
@@ -68,11 +78,25 @@ class Cache:
         """
         if one:
             rval = self.collection.find_one({'domain_name':domain})
-            if rval:
-                return rval
-            raise KeyError, domain
+
+            if not rval:
+                raise KeyError, domain
+
+            if 'whois' in rval and type(rval['whois']) == bson.binary.Binary:
+                whois = bytes(rval['whois'])
+                encoding = chardet.detect(whois)['encoding']
+                rval['whois'] = whois.decode(encoding)
+
+            return rval
         else:
-            return self.collection.find({'domain_name':domain})
+            rval = list()
+            for record in self.collection.find({'domain_name':domain}):
+                if 'whois' in record and type(record['whois']) == bson.binary.Binary:
+                    whois = bytes(record['whois'])
+                    encoding = chardet.detect(whois)['encoding']
+                    record['whois'] = whois.decode(encoding)
+                rval.append(record)
+            return rval
 
     def __contains__(self, domain):
         """
