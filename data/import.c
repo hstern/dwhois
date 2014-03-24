@@ -24,7 +24,7 @@ const char * make_printable(const char * p) {
     case 0x03:
       return "NONE";
     case 0x04:
-      return "VERISIGN";
+      return p+1;
     case 0x05:
       return "UNKNOWN";
     case 0x06:
