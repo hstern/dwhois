@@ -6,7 +6,7 @@ WHOIS_HEADERS=\
 	${WHOIS_DIR}/as32_del.h \
 	${WHOIS_DIR}/tld_serv.h \
 	${WHOIS_DIR}/servers_charset.h
-TARGET?=../src/dwhois/whois.yml
+TARGET?=../dwhois/whois.yml
 
 ${TARGET}: import
 	./$< > $@
