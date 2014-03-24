@@ -14,3 +14,16 @@ class TestWhois(unittest.TestCase):
 
     def test_extract_6to4_invalid(self):
         self.assertRaises(ValueError, dw._extract_6to4, 'invalid address literal')
+
+    def test_normalize_domain(self):
+        self.assertEquals(dw._normalize_domain('example.com'), 'example.com')
+        self.assertEquals(dw._normalize_domain('Example.com'), 'example.com')
+        self.assertEquals(dw._normalize_domain('example.com '), 'example.com')
+        self.assertEquals(dw._normalize_domain(' example.com'), 'example.com')
+        self.assertEquals(dw._normalize_domain('example.com.'), 'example.com')
+        self.assertEquals(dw._normalize_domain('example.com..'), 'example.com')
+        self.assertEquals(dw._normalize_domain('example.com.. \t'), 'example.com')
+        self.assertEquals(dw._normalize_domain('test example.com.. \t'), 'example.com')
+
+    def test_normalize_domain_idn(self):
+        self.assertEquals(dw._normalize_domain(u'www.Alliancefran\xe7aise.nu'), 'www.xn--alliancefranaise-npb.nu')

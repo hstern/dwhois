@@ -30,6 +30,23 @@ class WhoisError(Exception):
     Raised when the WHOIS lookup fails.
     """
 
+def _normalize_domain(domain):
+    """
+    Normalizes a domain name by converting it to lower case, removing
+    trailing dots and encoding with IDNA.  Like Marco d'Itri's whois,
+    it assumes that the domain is the last space-separated token in
+    the query.
+
+    @param domain: A domain name.
+    @type domain: unicode or bytes
+
+    @rtype: bytes
+    """
+    domain = domain.split()[-1].lower()
+    while domain[-1] == '.':
+        domain = domain[:-1]
+    return domain.encode('idna')
+
 def _extract_6to4(addr):
     """
     Returns the IPv4 address embedded in a 6to4 address.
