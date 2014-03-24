@@ -1,0 +1,4 @@
+chardet
+IPy
+pymongo
+requests
