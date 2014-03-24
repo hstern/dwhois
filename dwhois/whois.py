@@ -15,16 +15,36 @@
 # License along with this library; if not, write to the Free Software
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
+import re
+import socket
+import struct
 import subprocess
 import tempfile
-import re
 
 from dwhois.config import whois_path, whois_strict
+
+import IPy
 
 class WhoisError(Exception):
     """
     Raised when the WHOIS lookup fails.
     """
+
+def _extract_6to4(addr):
+    """
+    Returns the IPv4 address embedded in a 6to4 address.
+
+    @param addr: A valid 6to4 address literal.
+    @type addr: string or IPy.IP
+    @rtype: str
+
+    @raise WhoisError: If the address literal is not a 6to4.
+    @raise ValueError: If the address literal is invalid.
+    """
+    addr = IPy.IP(addr)
+    if addr.iptype() != '6TO4':
+        raise WhoisError('Address \'{0}\' is not 6to4'.format(addr))
+    return socket.inet_ntoa(struct.pack('!I', addr.int() >> 80 & 0x0FFFFFFFF))
 
 def is_valid_object(candidate):
     """
