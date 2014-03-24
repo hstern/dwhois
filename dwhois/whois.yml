@@ -938,7 +938,7 @@ servers_charset:
     'whois.nic.ad.jp': { charset: 'iso-2022-jp', options: null }
     'whois.nic.or.kr': { charset: 'utf-8', options: null }
     'whois.kr': { charset: 'utf-8', options: null }
-    'whois.nic.kz': { charset: 'rk1048', options: null }
+#    'whois.nic.kz': { charset: 'rk1048', options: null }
     'whois.nic.li': { charset: 'utf-8', options: null }
     'whois.domreg.lt': { charset: 'utf-8', options: null }
     'whois.dns.lu': { charset: 'iso-8859-1', options: null }
