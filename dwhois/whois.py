@@ -24,6 +24,12 @@ import tempfile
 from dwhois.config import whois_path, whois_strict
 
 import IPy
+import pkg_resources
+import yaml
+
+def _load_config():
+    return yaml.safe_load(pkg_resources.resource_string(__name__, 'whois.yml'))
+whois_config = _load_config()
 
 class WhoisError(Exception):
     """
