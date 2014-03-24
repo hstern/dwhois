@@ -36,7 +36,8 @@ Has an optional MongoDB-backed result cache.
             'requests >= 2.2.1',
             'pymongo >= 2.6.3',
             'chardet >= 2.0.1',
-            'IPy >= 0.75'],
+            'IPy >= 0.75',
+            'PyYAML >= 3.10'],
         url='https://github.com/hstern/dwhois',
         classifiers=[
             'Development Status :: 3 - Alpha',
