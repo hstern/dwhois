@@ -21,9 +21,10 @@
 import ConfigParser
 import os
 
+import pkg_resources
+
 config = ConfigParser.ConfigParser()
-config.readfp(open(
-    os.path.join(os.path.dirname(__file__), 'default.conf')))
+config.readfp(pkg_resources.resource_stream(__name__, 'default.conf'))
 config.read(['/etc/dwhois.conf',
     os.path.expanduser('~/.dwhois.conf'),
     './dwhois.conf'])
