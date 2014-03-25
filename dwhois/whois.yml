@@ -68,7 +68,7 @@ nic_handles:
     'fltr-': 'whois.ripe.net'
     'prng-': 'whois.ripe.net'
 ip_assign:
-    '0.0.0.0/255.0.0.0': "UNKNOWN"
+#    '0.0.0.0/255.0.0.0': "UNKNOWN"
     '1.0.0.0/255.0.0.0': "whois.apnic.net"
     '2.0.0.0/255.0.0.0': "whois.ripe.net"
     '5.0.0.0/255.0.0.0': "whois.ripe.net"
