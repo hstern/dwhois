@@ -166,3 +166,18 @@ class TestWhois(unittest.TestCase):
 
     def test_server_for_email(self):
         self.assertRaises(dw.WhoisError, dw._guess_server, 'user@example.net')
+
+    def test_server_for_asn(self):
+        self.assertEquals(dw._guess_server('as1'), 'whois.arin.net')
+        self.assertEquals(dw._guess_server('as306'), 'whois.nic.mil')
+        self.assertEquals(dw._guess_server('as63488'), 'whois.apnic.net')
+        self.assertEquals(dw._guess_server('as150000'), 'whois.apnic.net')
+        self.assertEquals(dw._guess_server('as200000'), 'whois.ripe.net')
+
+    def test_server_for_rspl(self):
+        self.assertEquals(dw._guess_server('as'), 'whois.arin.net')
+        self.assertEquals(dw._guess_server('astest'), 'whois.arin.net')
+
+    def test_server_for_asn_invalid(self):
+        self.assertRaises(dw.WhoisError, dw._guess_server, 'as0')
+        self.assertRaises(dw.WhoisError, dw._guess_server, 'as2000000')
