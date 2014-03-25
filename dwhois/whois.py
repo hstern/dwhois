@@ -92,6 +92,19 @@ _ip6_type_handlers = {
         '6TO4' : _extract_6to4,
         }
 
+def _extract_inaddr(addr):
+    suffix = '.in-addr.arpa'
+    if not addr.endswith(suffix):
+        raise WhoisError('Address \'{0}\' is not a subdomain of inaddr.arpa'.format(addr))
+
+    try:
+        ip = IPy.IP('.'.join(reversed(addr[:-len(suffix)].split('.'))))
+    except ValueError, e:
+        raise WhoisError(e.message)
+    if ip.version() != 4:
+        raise WhoisError('Extracted address \'{0}\' is not IPv4'.format(ip))
+    return str(ip)
+
 def _guess_server(query):
     try:
         ip = IPy.IP(query)
@@ -118,6 +131,9 @@ def _guess_server(query):
             return _default_server
     except ValueError:
         pass
+
+    if query.endswith('.in-addr.arpa'):
+        return _guess_server(_extract_inaddr(query))
 
     if query.startswith('as'):
         m = re.match(r'^as([0-9]+)', query, re.I)

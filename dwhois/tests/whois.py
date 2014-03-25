@@ -133,6 +133,17 @@ class TestWhoisFunctions(unittest.TestCase):
     def test_extract_teredo_invalid(self):
         self.assertRaises(ValueError, dw._extract_teredo, 'invalid address literal')
 
+    def test_extract_inaddr(self):
+        self.assertEquals(dw._extract_inaddr('1.in-addr.arpa'), '1.0.0.0')
+        self.assertEquals(dw._extract_inaddr('2.1.in-addr.arpa'), '1.2.0.0')
+        self.assertEquals(dw._extract_inaddr('3.2.1.in-addr.arpa'), '1.2.3.0')
+        self.assertEquals(dw._extract_inaddr('4.3.2.1.in-addr.arpa'), '1.2.3.4')
+
+    def test_extract_inaddr_invalid(self):
+        self.assertRaises(dw.WhoisError, dw._extract_inaddr, 'example.com')
+        self.assertRaises(dw.WhoisError, dw._extract_inaddr, 'example.in-addr.arpa')
+        self.assertRaises(dw.WhoisError, dw._extract_inaddr, '5.4.3.2.1.in-addr.arpa')
+
     def test_normalize_domain(self):
         self.assertEquals(dw._normalize_domain('example.com'), 'example.com')
         self.assertEquals(dw._normalize_domain('Example.com'), 'example.com')
@@ -165,6 +176,12 @@ class TestWhoisFunctions(unittest.TestCase):
 
     def test_server_for_ipv4_unknown(self):
         self.assertRaises(dw.WhoisError, dw._guess_server, '0.0.0.0')
+
+    def test_server_for_inaddr_arpa(self):
+        self.assertEquals(dw._guess_server('8.8.8.8.in-addr.arpa'), 'whois.arin.net')
+
+    def test_server_for_inaddr_arpa_invalid(self):
+        self.assertRaises(dw.WhoisError, dw._guess_server, 'example.in-addr.arpa')
 
     def test_server_for_email(self):
         self.assertRaises(dw.WhoisError, dw._guess_server, 'user@example.net')
