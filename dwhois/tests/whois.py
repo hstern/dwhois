@@ -163,3 +163,6 @@ class TestWhois(unittest.TestCase):
 
     def test_server_for_ipv4_unknown(self):
         self.assertRaises(dw.WhoisError, dw._guess_server, '0.0.0.0')
+
+    def test_server_for_email(self):
+        self.assertRaises(dw.WhoisError, dw._guess_server, 'user@example.net')

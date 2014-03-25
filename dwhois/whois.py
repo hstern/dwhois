@@ -119,7 +119,10 @@ def _guess_server(query):
     except ValueError:
         pass
 
-    return _default_server
+    if '@' in query:
+        raise WhoisError, "No whois server is known for email addresses."
+
+    raise WhoisError, 'Unknown query type'
 
 def is_valid_object(candidate):
     """
