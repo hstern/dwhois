@@ -143,3 +143,23 @@ class TestWhois(unittest.TestCase):
 
     def test_normalize_domain_idn(self):
         self.assertEquals(dw._normalize_domain(u'www.Alliancefran\xe7aise.nu'), 'www.xn--alliancefranaise-npb.nu')
+
+    def test_server_for_ipv6(self):
+        self.assertEquals(dw._guess_server('2001:0201::1'), 'whois.apnic.net')
+        self.assertEquals(dw._guess_server('3ffe::1'), 'whois.6bone.net')
+
+    def test_server_for_ipv6_teredo(self):
+        self.assertEquals(dw._guess_server('2001:0:0808:0808::1'), 'whois.arin.net')
+
+    def test_server_for_ipv6_6to4(self):
+        self.assertEquals(dw._guess_server('2002:0808:0808::1'), 'whois.arin.net')
+
+    def test_server_for_ipv6_unknown(self):
+        self.assertRaises(dw.WhoisError, dw._guess_server, '::')
+
+    def test_server_for_ipv4(self):
+        self.assertEquals(dw._guess_server('8.8.8.8'), 'whois.arin.net')
+        self.assertEquals(dw._guess_server('2.0.0.1'), 'whois.ripe.net')
+
+    def test_server_for_ipv4_unknown(self):
+        self.assertRaises(dw.WhoisError, dw._guess_server, '0.0.0.0')

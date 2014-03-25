@@ -27,9 +27,10 @@ import IPy
 import pkg_resources
 import yaml
 
-def _load_config():
-    return yaml.safe_load(pkg_resources.resource_string(__name__, 'whois.yml'))
-whois_config = _load_config()
+whois_config = yaml.safe_load(pkg_resources.resource_string(__name__, 'whois.yml'))
+_default_server = 'whois.arin.net'
+_default_port = 43
+
 
 class WhoisError(Exception):
     """
@@ -85,6 +86,40 @@ def _extract_6to4(addr):
     if addr.iptype() != '6TO4':
         raise WhoisError('Address \'{0}\' is not 6to4'.format(addr))
     return socket.inet_ntoa(struct.pack('!I', addr.int() >> 80 & 0x0FFFFFFFF))
+
+_ip6_type_handlers = {
+        'TEREDO' : _extract_teredo,
+        '6TO4' : _extract_6to4,
+        }
+
+def _guess_server(query):
+    try:
+        ip = IPy.IP(query)
+
+        if ip.version() == 6:
+            if ip.iptype() in _ip6_type_handlers:
+                return _guess_server(_ip6_type_handlers[ip.iptype()](ip))
+            else:
+                if ip in IPy.IP('::/16'):
+                    raise WhoisError, 'Unknown whois server for ::/16'
+                for cidr,server in whois_config['ip6_assign'].iteritems():
+                    net = IPy.IP(cidr)
+                    if ip in net:
+                        return server
+                return _default_server
+        else:
+            if ip in IPy.IP('0.0.0.0/8'):
+                raise WhoisError, 'Unknown whois server for 0.0.0.0/8'
+
+            for cidr,server in whois_config['ip_assign'].iteritems():
+                net = IPy.IP(cidr)
+                if ip in net:
+                    return server
+            return _default_server
+    except ValueError:
+        pass
+
+    return _default_server
 
 def is_valid_object(candidate):
     """
