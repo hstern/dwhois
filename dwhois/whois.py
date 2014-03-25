@@ -140,6 +140,17 @@ def _guess_server(query):
     if '@' in query:
         raise WhoisError, "No whois server is known for email addresses."
 
+    # NSI NIC handle
+    if not re.search(r'[\.\-]', query):
+        if query.startswith('!'):
+            return 'whois.networksolutions.com'
+        else:
+            raise WhoisError, 'Unknown NIC handle type'
+
+    for handle,server in whois_config['nic_handles'].iteritems():
+        if query.startswith(handle):
+            return server
+
     raise WhoisError, 'Unknown query type'
 
 def is_valid_object(candidate):

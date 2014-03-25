@@ -184,6 +184,11 @@ class TestWhoisFunctions(unittest.TestCase):
         self.assertRaises(dw.WhoisError, dw._guess_server, 'as0')
         self.assertRaises(dw.WhoisError, dw._guess_server, 'as2000000')
 
+    def test_server_for_nic_handle(self):
+        self.assertEquals(dw._guess_server('!example'), 'whois.networksolutions.com')
+        for handle,server in dw.whois_config['nic_handles'].iteritems():
+            self.assertEquals(dw._guess_server('%sexample' % handle), server)
+
 class TestWhois(unittest.TestCase):
     data_dir = 'whois_data'
 
