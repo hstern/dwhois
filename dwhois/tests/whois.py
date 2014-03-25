@@ -11,17 +11,17 @@ _valid_handle = re.compile(r'^{label}-'.format(label=_valid_label.pattern), re.I
 _valid_tld = re.compile(r'^[-\.]{domain}'.format(domain=_valid_domain.pattern[1:-1]), re.I)
 
 class TestWhois(unittest.TestCase):
-    def test_load_config(self):
+    def test_whois_config(self):
         self.assertIsNotNone(dw.whois_config)
         self.assertIsInstance(dw.whois_config, dict)
 
-    def test_load_config_ripe_servers(self):
+    def test_whois_config_ripe_servers(self):
         self.assertIn('ripe_servers', dw.whois_config)
         self.assertIsInstance(dw.whois_config['ripe_servers'], list)
         for value in dw.whois_config['ripe_servers']:
             self.assertRegexpMatches(value, _valid_domain)
 
-    def test_load_config_hide_strings(self):
+    def test_whois_config_hide_strings(self):
         self.assertIn('hide_strings', dw.whois_config)
         self.assertIsInstance(dw.whois_config['hide_strings'], list)
         for pair in dw.whois_config['hide_strings']:
@@ -30,28 +30,28 @@ class TestWhois(unittest.TestCase):
             for value in pair:
                 self.assertIsInstance(value, bytes)
 
-    def test_load_config_nic_handles(self):
+    def test_whois_config_nic_handles(self):
         self.assertIn('nic_handles', dw.whois_config)
         self.assertIsInstance(dw.whois_config['nic_handles'], dict)
         for key,value in dw.whois_config['nic_handles'].iteritems():
             self.assertRegexpMatches(key, _valid_handle)
             self.assertRegexpMatches(value, _valid_domain)
 
-    def test_load_config_ip_assign(self):
+    def test_whois_config_ip_assign(self):
         self.assertIn('ip_assign', dw.whois_config)
         self.assertIsInstance(dw.whois_config['ip_assign'], dict)
         for key,value in dw.whois_config['ip_assign'].iteritems():
             self.assertEqual(IPy.IP(key).version(), 4)
             self.assertRegexpMatches(value, _valid_domain)
 
-    def test_load_config_ip6_assign(self):
+    def test_whois_config_ip6_assign(self):
         self.assertIn('ip6_assign', dw.whois_config)
         self.assertIsInstance(dw.whois_config['ip6_assign'], dict)
         for key,value in dw.whois_config['ip6_assign'].iteritems():
             self.assertEqual(IPy.IP(key).version(), 6)
             self.assertRegexpMatches(value, _valid_domain)
 
-    def test_load_config_as_del(self):
+    def test_whois_config_as_del(self):
         self.assertIn('as_del', dw.whois_config)
         self.assertIsInstance(dw.whois_config['as_del'], list)
         for value in dw.whois_config['as_del']:
@@ -69,7 +69,7 @@ class TestWhois(unittest.TestCase):
             self.assertIn('serv', value)
             self.assertRegexpMatches(value['serv'], _valid_domain)
 
-    def test_load_config_as32_del(self):
+    def test_whois_config_as32_del(self):
         self.assertIn('as32_del', dw.whois_config)
         self.assertIsInstance(dw.whois_config['as32_del'], list)
         for value in dw.whois_config['as32_del']:
@@ -87,7 +87,7 @@ class TestWhois(unittest.TestCase):
             self.assertIn('serv', value)
             self.assertRegexpMatches(value['serv'], _valid_domain)
 
-    def test_load_config_tld_serv(self):
+    def test_whois_config_tld_serv(self):
         self.assertIn('tld_serv', dw.whois_config)
         self.assertIsInstance(dw.whois_config['tld_serv'], dict)
 
@@ -96,7 +96,7 @@ class TestWhois(unittest.TestCase):
             if value is not None:
                 self.assertRegexpMatches(value, _valid_domain)
 
-    def test_load_config_servers_charset(self):
+    def test_whois_config_servers_charset(self):
         self.assertIn('servers_charset', dw.whois_config)
         self.assertIsInstance(dw.whois_config['servers_charset'], dict)
 
