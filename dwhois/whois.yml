@@ -456,7 +456,7 @@ tld_serv:
     '.int': 'whois.iana.org'
     '.mil': null
     '.e164.arpa': 'whois.ripe.net'
-    '.in-addr.arpa': 'ARPA'
+#    '.in-addr.arpa': 'ARPA'
     '.arpa': 'whois.iana.org'
     '.aero': 'whois.aero'
     '.asia': 'whois.nic.asia'
