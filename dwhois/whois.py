@@ -167,6 +167,21 @@ def _guess_server(query):
         if query.startswith(handle):
             return server
 
+    tld_match = None
+    tld_server = None
+
+    for tld,server in whois_config['tld_serv'].iteritems():
+        if query.endswith(tld):
+            if tld_match is None or len(tld_match) < len(tld):
+                tld_match = tld
+                tld_server = server
+
+    if tld_match:
+        return tld_server
+
+    if '.' in query:
+        return _default_server
+
     raise WhoisError, 'Unknown query type'
 
 def is_valid_object(candidate):

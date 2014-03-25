@@ -206,6 +206,10 @@ class TestWhoisFunctions(unittest.TestCase):
         for handle,server in dw.whois_config['nic_handles'].iteritems():
             self.assertEquals(dw._guess_server('%sexample' % handle), server)
 
+    def test_server_for_tld(self):
+        for tld,server in dw.whois_config['tld_serv'].iteritems():
+            self.assertEquals(dw._guess_server('example%s' % tld), server)
+
 class TestWhois(unittest.TestCase):
     data_dir = 'whois_data'
 
