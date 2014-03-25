@@ -119,6 +119,18 @@ class TestWhois(unittest.TestCase):
     def test_extract_6to4_invalid(self):
         self.assertRaises(ValueError, dw._extract_6to4, 'invalid address literal')
 
+    def test_extract_teredo(self):
+        self.assertEquals(dw._extract_teredo('2001:0:c000:0204::'), '192.0.2.4')
+
+    def test_extract_teredo_ipv4(self):
+        self.assertRaises(dw.WhoisError, dw._extract_teredo, '192.168.0.1')
+
+    def test_extract_teredo_not_teredo(self):
+        self.assertRaises(dw.WhoisError, dw._extract_teredo, '2002::')
+
+    def test_extract_teredo_invalid(self):
+        self.assertRaises(ValueError, dw._extract_teredo, 'invalid address literal')
+
     def test_normalize_domain(self):
         self.assertEquals(dw._normalize_domain('example.com'), 'example.com')
         self.assertEquals(dw._normalize_domain('Example.com'), 'example.com')

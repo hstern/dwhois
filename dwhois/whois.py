@@ -53,6 +53,23 @@ def _normalize_domain(domain):
         domain = domain[:-1]
     return domain.encode('idna')
 
+def _extract_teredo(addr):
+    """
+    Returns the IPv4 address embedded in a teredo address.
+
+    @param addr: A valid teredo address literal.
+    @type addr: string or IPy.IP
+    @rtype: str
+
+    @raise WhoisError: If the address literal is not a teredo.
+    @raise ValueError: If the address literal is invalid.
+    """
+    addr = IPy.IP(addr)
+    if addr.iptype() != 'TEREDO':
+        raise WhoisError('Address \'{0}\' is not 6to4'.format(addr))
+    return socket.inet_ntoa(struct.pack('!I', addr.int() >> 64 & 0x0FFFFFFFF))
+
+
 def _extract_6to4(addr):
     """
     Returns the IPv4 address embedded in a 6to4 address.
