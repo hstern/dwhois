@@ -1,16 +1,18 @@
 import encodings
+import os
 import re
 import unittest
 
 import dwhois.whois as dw
 import IPy
+import pkg_resources
 
 _valid_label = re.compile(r'(?:[a-z0-9\-]+)', re.I)
 _valid_domain = re.compile(r'^(?:{label}\.)*{label}$'.format(label=_valid_label.pattern), re.I)
 _valid_handle = re.compile(r'^{label}-'.format(label=_valid_label.pattern), re.I)
 _valid_tld = re.compile(r'^[-\.]{domain}'.format(domain=_valid_domain.pattern[1:-1]), re.I)
 
-class TestWhois(unittest.TestCase):
+class TestWhoisFunctions(unittest.TestCase):
     def test_whois_config(self):
         self.assertIsNotNone(dw.whois_config)
         self.assertIsInstance(dw.whois_config, dict)
@@ -181,3 +183,29 @@ class TestWhois(unittest.TestCase):
     def test_server_for_asn_invalid(self):
         self.assertRaises(dw.WhoisError, dw._guess_server, 'as0')
         self.assertRaises(dw.WhoisError, dw._guess_server, 'as2000000')
+
+class TestWhois(unittest.TestCase):
+    data_dir = 'whois_data'
+
+    def setUp(self):
+        self.orig_whois_path = dw.whois_path
+        dw.whois_path = pkg_resources.resource_filename(__name__, 'whois_helper.py')
+        for fn in pkg_resources.resource_listdir(__name__, TestWhois.data_dir):
+            pkg_resources.resource_filename(__name__, os.path.join(TestWhois.data_dir, fn))
+
+    def tearDown(self):
+        dw.whois_path = self.orig_whois_path
+
+    @staticmethod
+    def _get_data(query):
+        return pkg_resources.resource_string(__name__, os.path.join(TestWhois.data_dir, query))
+
+    def test_whois(self):
+        for query in ['basic-test', 'github.com']:
+            self.assertEquals(dw.whois(query), TestWhois._get_data(query))
+
+    def test_whois_external(self):
+        client = dw.ExternalWhoisClient()
+        self.assertEquals(client.path, dw.whois_path)
+        for query in ['basic-test', 'github.com']:
+            self.assertEquals(client.lookup(query), TestWhois._get_data(query))

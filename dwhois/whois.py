@@ -170,20 +170,59 @@ def whois(domain):
 
     @raise WhoisError: On lookup failure.
     """
+    return ExternalWhoisClient().lookup(domain)
 
-    #perform some input checking since
-    #domain could come from an untrusted source
-    domain=domain.strip()
-    if not is_valid_object(domain):
-        raise WhoisError, "invalid domain name: %s"%domain
+class WhoisClient:
+    def lookup(self, query):
+        """
+        Retrieves a WHOIS record.
 
-    buf = tempfile.TemporaryFile()
-    errbuf = tempfile.TemporaryFile()
+        @param query: The query to look up.
+        @type query: string
 
-    try:
-        subprocess.check_call([whois_path, '--', domain], stdout=buf, stderr=errbuf)
-        buf.seek(0)
-        return buf.read()
-    except subprocess.CalledProcessError:
-        errbuf.seek(0)
-        raise WhoisError, "whois failed: '%s'" % errbuf.read().rstrip()
+        @rtype: string
+
+        @raise WhoisError: On lookup failure.
+        """
+        raise NotImplementedError
+
+class ExternalWhoisClient(WhoisClient):
+    """
+    A WHOIS client that uses an external program to resolve queries.
+    It must handle arguments of the form "-- domain".  It is expected
+    that most people will use Marco d'Itri's WHOIS client.
+    """
+    def __init__(self, path=whois_path):
+        """
+        @param path: Path to the whois binary.
+        @type path: string
+        """
+        self.path = whois_path
+
+    def lookup(self, query):
+        """
+        Retrieves a WHOIS record.
+
+        @param query: The query to look up.
+        @type query: string
+
+        @rtype: string
+
+        @raise WhoisError: On lookup failure.
+        """
+        #perform some input checking since
+        #domain could come from an untrusted source
+        query=query.strip()
+        if not is_valid_object(query):
+            raise WhoisError, "invalid query name: %s"%query
+
+        buf = tempfile.TemporaryFile()
+        errbuf = tempfile.TemporaryFile()
+
+        try:
+            subprocess.check_call([self.path, '--', query], stdout=buf, stderr=errbuf)
+            buf.seek(0)
+            return buf.read()
+        except subprocess.CalledProcessError:
+            errbuf.seek(0)
+            raise WhoisError, "whois failed: '%s'" % errbuf.read().rstrip()
