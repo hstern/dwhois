@@ -371,7 +371,7 @@ as_del:
     - { 'first': 9840, 'last': 9871, 'serv': whois.nic.or.kr }
     - { 'first': 9943, 'last': 9982, 'serv': whois.nic.or.kr }
     - { 'first': 9990, 'last': 10021, 'serv': whois.nic.ad.jp }
-    - { 'first': 9216, 'last': 10067, 'serv': whois.apnic.net }
+    - { 'first': 9216, 'last': 10032, 'serv': whois.apnic.net }
     - { 'first': 10034, 'last': 10073, 'serv': whois.nic.or.kr }
     - { 'first': 10154, 'last': 10198, 'serv': whois.nic.or.kr }
     - { 'first': 10074, 'last': 10239, 'serv': whois.apnic.net }
@@ -382,15 +382,15 @@ as_del:
     - { 'first': 17673, 'last': 17704, 'serv': whois.nic.ad.jp }
     - { 'first': 17832, 'last': 17880, 'serv': whois.nic.or.kr }
     - { 'first': 17408, 'last': 18431, 'serv': whois.apnic.net }
-    - { 'first': 17930, 'last': 17961, 'serv': whois.nic.ad.jp }
-    - { 'first': 18067, 'last': 18098, 'serv': whois.nic.ad.jp }
-    - { 'first': 18121, 'last': 18152, 'serv': whois.nic.ad.jp }
-    - { 'first': 18259, 'last': 18290, 'serv': whois.nic.ad.jp }
-    - { 'first': 18259, 'last': 18290, 'serv': whois.nic.ad.jp }
+#    - { 'first': 17930, 'last': 17961, 'serv': whois.nic.ad.jp }
+#    - { 'first': 18067, 'last': 18098, 'serv': whois.nic.ad.jp }
+#    - { 'first': 18121, 'last': 18152, 'serv': whois.nic.ad.jp }
+#    - { 'first': 18259, 'last': 18290, 'serv': whois.nic.ad.jp }
+#    - { 'first': 18259, 'last': 18290, 'serv': whois.nic.ad.jp }
     - { 'first': 20480, 'last': 21503, 'serv': whois.ripe.net }
     - { 'first': 23552, 'last': 24575, 'serv': whois.apnic.net }
-    - { 'first': 23552, 'last': 23601, 'serv': whois.nic.or.kr }
-    - { 'first': 23612, 'last': 23643, 'serv': whois.nic.ad.jp }
+#    - { 'first': 23552, 'last': 23601, 'serv': whois.nic.or.kr }
+#    - { 'first': 23612, 'last': 23643, 'serv': whois.nic.ad.jp }
     - { 'first': 24576, 'last': 25599, 'serv': whois.ripe.net }
     - { 'first': 26592, 'last': 26623, 'serv': whois.lacnic.net }
     - { 'first': 27648, 'last': 28671, 'serv': whois.lacnic.net }
