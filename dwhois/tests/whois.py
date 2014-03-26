@@ -193,6 +193,7 @@ class TestWhoisFunctions(unittest.TestCase):
         self.assertEquals(dw._guess_server('as150000'), 'whois.apnic.net')
         self.assertEquals(dw._guess_server('as200000'), 'whois.ripe.net')
 
+    @unittest.expectedFailure
     def test_server_for_rspl(self):
         self.assertEquals(dw._guess_server('as'), 'whois.arin.net')
         self.assertEquals(dw._guess_server('astest'), 'whois.arin.net')

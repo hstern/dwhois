@@ -135,23 +135,20 @@ def _guess_server(query):
     if query.endswith('.in-addr.arpa'):
         return _guess_server(_extract_inaddr(query))
 
-    if query.startswith('as'):
-        m = re.match(r'^as([0-9]+)', query, re.I)
+    m = re.match(r'^as([0-9]+)', query, re.I)
 
-        if m:
-            as_num = int(m.group(1))
+    if m:
+        as_num = int(m.group(1))
 
-            if as_num < 65536:
-                for as_assign in whois_config['as_del']:
-                    if as_num >= as_assign['first'] and as_num <= as_assign['last']:
-                        return as_assign['serv']
-            else:
-                for as_assign in whois_config['as32_del']:
-                    if as_num >= as_assign['first'] and as_num <= as_assign['last']:
-                        return as_assign['serv']
-            raise WhoisError, 'Unknown AS number.'
+        if as_num < 65536:
+            for as_assign in whois_config['as_del']:
+                if as_num >= as_assign['first'] and as_num <= as_assign['last']:
+                    return as_assign['serv']
         else:
-            return _default_server
+            for as_assign in whois_config['as32_del']:
+                if as_num >= as_assign['first'] and as_num <= as_assign['last']:
+                    return as_assign['serv']
+        raise WhoisError, 'Unknown AS number.'
 
     if '@' in query:
         raise WhoisError, "No whois server is known for email addresses."
