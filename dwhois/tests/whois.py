@@ -13,6 +13,10 @@ _valid_handle = re.compile(r'^{label}-'.format(label=_valid_label.pattern), re.I
 _valid_tld = re.compile(r'^[-\.]{domain}'.format(domain=_valid_domain.pattern[1:-1]), re.I)
 
 class TestWhoisFunctions(unittest.TestCase):
+    def __init__(self, *args, **kwargs):
+        super(TestWhoisFunctions, self).__init__(*args, **kwargs)
+        self.longMessage = True
+
     def test_whois_config(self):
         self.assertIsNotNone(dw.whois_config)
         self.assertIsInstance(dw.whois_config, dict)
@@ -187,11 +191,10 @@ class TestWhoisFunctions(unittest.TestCase):
         self.assertRaises(dw.WhoisError, dw._guess_server, 'user@example.net')
 
     def test_server_for_asn(self):
-        self.assertEquals(dw._guess_server('as1'), 'whois.arin.net')
-        self.assertEquals(dw._guess_server('as306'), 'whois.nic.mil')
-        self.assertEquals(dw._guess_server('as63488'), 'whois.apnic.net')
-        self.assertEquals(dw._guess_server('as150000'), 'whois.apnic.net')
-        self.assertEquals(dw._guess_server('as200000'), 'whois.ripe.net')
+        for as_range in dw.whois_config['as_del'] + dw.whois_config['as32_del']:
+            asn = as_range['first']
+            self.assertEquals(dw._guess_server('as%d' % asn),
+                   as_range['serv'], msg='asn = %d' % asn)
 
     @unittest.expectedFailure
     def test_server_for_rspl(self):
@@ -203,13 +206,15 @@ class TestWhoisFunctions(unittest.TestCase):
         self.assertRaises(dw.WhoisError, dw._guess_server, 'as2000000')
 
     def test_server_for_nic_handle(self):
-        self.assertEquals(dw._guess_server('!example'), 'whois.networksolutions.com')
+        self.assertEquals(dw._guess_server('!example'), 'whois.networksolutions.com', msg='handle = \'!example\'')
         for handle,server in dw.whois_config['nic_handles'].iteritems():
-            self.assertEquals(dw._guess_server('%sexample' % handle), server)
+            self.assertEquals(dw._guess_server('%sexample' % handle),
+                    server, msg='handle = %s' % repr(handle))
 
     def test_server_for_tld(self):
         for tld,server in dw.whois_config['tld_serv'].iteritems():
-            self.assertEquals(dw._guess_server('example%s' % tld), server)
+            self.assertEquals(dw._guess_server('example%s' % tld), server,
+                    msg='tld = %s' % repr(tld))
 
 class TestWhois(unittest.TestCase):
     data_dir = 'whois_data'
