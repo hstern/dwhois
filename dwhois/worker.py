@@ -95,7 +95,7 @@ class Worker:
                 print e.message
 
                 time.sleep(error_sleep)
-                error_sleep = min(self.error_sleep*2, self.sleep_max)
+                error_sleep = min(error_sleep*2, self.sleep_max)
 
     def push_results(self, domain, text):
         """
